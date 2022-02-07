@@ -1,1 +1,1 @@
-# helica
+# helica    -   A freelance project
