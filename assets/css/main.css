@@ -1,9 +1,14 @@
+html{
+  overflow-x: hidden;
+}
 body {
   font-family: "Montserrat", sans-serif;
 }
 .main-header {
+    position: relative;
   height: 80px;
   background: #ffffff;
+  z-index: 9;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.06);
 }
 .custom-container {
@@ -35,14 +40,16 @@ body {
 }
 .menu-btn:hover {
   background: white;
-  /* border: 1px solid #060E9F; */
-  font-weight: 900;
-  /* background: #060E9F; */
+  font-weight: 500;
   color: #060e9f;
-  /* color: white; */
 }
 .hero-section {
   height: 895px;
+  padding-top: 120px;
+}
+.hero-section.green-hero-section {
+  position: relative;
+  height: 452px;
   padding-top: 120px;
 }
 .hero-section > .container {
@@ -50,6 +57,12 @@ body {
 }
 .hero-img-wrapper {
   float: right;
+}
+.green-hero-img-wrapper{
+  float: right;
+    position: absolute;
+    right: 0px;
+    top: -80px;
 }
 .hero-content {
   position: absolute;
@@ -62,6 +75,9 @@ body {
   width: 60%;
   letter-spacing: -0.02em;
   cursor: default;
+}
+.hero-content.green-hero-content h3 {
+  color: #73CE00;
 }
 .hero-content-btn {
   padding: 14px 32px;
@@ -360,6 +376,10 @@ footer {
     padding-top: 80px;
     height: 650px;
   }
+  .hero-section.green-hero-section{
+    padding-top: 80px;
+    height: 372px;
+  }
   .hero-content {
     position: unset;
     margin-bottom: 60px;
@@ -373,6 +393,11 @@ footer {
   .hero-img-wrapper {
     width: 100%;
   }
+  .hero-img-wrapper.green-hero-img-wrapper {
+    bottom: -100px;
+    top: unset;
+    right: -15px;
+}
   .hero-img-wrapper img {
     width: 100%;
   }
