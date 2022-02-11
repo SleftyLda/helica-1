@@ -75,6 +75,7 @@ body {
   width: 60%;
   letter-spacing: -0.02em;
   cursor: default;
+  overflow: hidden;
 }
 .hero-content.green-hero-content h3 {
   color: #73ce00;
@@ -108,6 +109,7 @@ body {
   font-size: 32px;
   color: #060e9f;
   letter-spacing: -0.02em;
+  overflow: hidden;
 }
 .benefits-section {
   padding: 160px 0 185px;
@@ -122,6 +124,8 @@ body {
   font-size: 16px;
   letter-spacing: -0.02em;
   color: #060e9f;
+  overflow: hidden;
+  padding-bottom: 20px;
 }
 .bs-heading-text:after {
   content: "";
@@ -129,7 +133,7 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  bottom: -16px;
+  bottom: 1px;
   width: 16px;
   height: 2px;
   background: #060e9f;
@@ -382,9 +386,11 @@ footer {
   display: inline-block;
   font-weight: 600;
   font-size: 16px;
+  padding-bottom: 16px;
   letter-spacing: -0.02em;
   color: #73ce00;
   margin-bottom: 56px;
+  overflow: hidden;
 }
 .om-heading-text:after {
   content: "";
@@ -392,7 +398,7 @@ footer {
   left: 0;
   right: 0;
   margin: auto;
-  bottom: -16px;
+  bottom: 1px;
   width: 16px;
   height: 2px;
   background: #73ce00;
@@ -462,6 +468,7 @@ footer {
   text-align: center;
   letter-spacing: -0.02em;
   color: #73ce00;
+  overflow: hidden;
 }
 .cn-heading-desc {
   position: relative;
@@ -540,18 +547,20 @@ footer {
 }
 .ms-heading-text {
   position: relative;
+  padding-bottom: 17px;
   display: inline-block;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: -0.02em;
   color: #73ce00;
   margin-bottom: 56px;
+  overflow: hidden;
 }
 .ms-heading-text:after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -16px;
+  bottom: 1px;
   width: 16px;
   height: 2px;
   background: #73ce00;
@@ -629,6 +638,20 @@ footer {
   color: #00033a;
   background: #ffffff;
   border-color: #00033a;
+}
+
+/* Animation CSS */
+
+.ml16 .letter,
+.ml16a .letter,
+.ml16b .letter,
+.ml16c .letter,
+.ml16d .letter,
+.ml16e .letter,
+.ml16f .letter,
+.ml16g .letter {
+  display: inline-block;
+  line-height: 1em;
 }
 
 @media screen and (max-width: 992px) {
