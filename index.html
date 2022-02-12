@@ -68,7 +68,7 @@
     <section class="benefits-section" id="benefits-section">
         <div class="container">
             <div class="bs-seaction-heading">
-                <h5 class="bs-heading-text ml16b" >Vantagens</h5>
+                <h5 class="bs-heading-text ml16b">Vantagens</h5>
             </div>
             <div class="bs-vantagens-wrapper">
                 <div data-aos="fade-up" class="bs-vantage-item">
@@ -140,7 +140,7 @@
     </section>
     <section class="services-section" id="ml16c">
         <div class="bs-seaction-heading">
-            <h5 class="bs-heading-text ml16c" >A Helica é a solução ideal para</h5>
+            <h5 class="bs-heading-text ml16c">A Helica é a solução ideal para</h5>
         </div>
         <div class="services-wrapper">
             <div class="m-container" data-aos="fade-up">
@@ -272,23 +272,27 @@
     <script>
         AOS.init();
 
-        var textWrapper = document.querySelector('.ml16');
-        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        $(document).ready(function () {
+            $('.ml16').css("display", "block")
+            var textWrapper = document.querySelector('.ml16');
+            textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-        anime.timeline()
-            .add({
-                targets: '.ml16 .letter',
-                translateY: [-100, 0],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 30 * i
-            }).add({
-                targets: '.ml16',
-                opacity: 1,
-                duration: 1000,
-                easing: "easeOutExpo",
-                delay: 1000
-            });
+            anime.timeline()
+                .add({
+                    targets: '.ml16 .letter',
+                    translateY: [-100, 0],
+                    easing: "easeOutExpo",
+                    duration: 1400,
+                    delay: (el, i) => 30 * i
+                }).add({
+                    targets: '.ml16',
+                    opacity: 1,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+        })
+
 
         var waypoint = new Waypoint({
             element: document.getElementById('desc-section'),
@@ -337,7 +341,7 @@
                         easing: "easeOutExpo",
                         delay: 1000
                     });
-                    waypoint2.disable()
+                waypoint2.disable()
             },
             group: 'custom-group',
             offset: '75%'
