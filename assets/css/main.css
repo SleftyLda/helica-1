@@ -653,7 +653,13 @@ footer {
   display: inline-block;
   line-height: 1em;
 }
-.ml16a{
+.ml16a,
+.ml16b,
+.ml16c,
+.ml16e,
+.ml16f,
+.ml16g
+{
   display: none;
 }
 @media screen and (max-width: 992px) {

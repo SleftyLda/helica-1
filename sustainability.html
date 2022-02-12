@@ -47,11 +47,12 @@
         </div>
     </section>
 
-    <section class="mission-section">
+    <section class="mission-section" id="mission-section">
         <div class="container">
             <div class="om-heading-section">
                 <h6 class="om-heading-text ml16e">A nossa missão</h6>
-                <p data-aos="fade-up" class="om-heading-desc">A HELICA distingue-se das alternativas tradicionais de fundações ao ser uma
+                <p data-aos="fade-up" class="om-heading-desc">A HELICA distingue-se das alternativas tradicionais de
+                    fundações ao ser uma
                     solução verdadeiramente sustentável por diversos motivos.</p>
             </div>
             <div class="mission-card-wrapper">
@@ -75,15 +76,16 @@
         </div>
     </section>
 
-    <section class="carbon-neutral-section">
+    <section class="carbon-neutral-section" id="carbon-neutral-section">
         <div class="container">
             <div class="section-head">
                 <h5 class="cn-heading-text ml16f">Todas as nossas obras são carbon neutral.</h5>
                 <h4 data-aos="fade-up" class="cn-heading-desc">O que é que isso significa?</h4>
-                <p data-aos="fade-up" class="cn-desc">Calculamos a libertação de CO2 de cada obra, de acordo com as suas características e
+                <p data-aos="fade-up" class="cn-desc">Calculamos a libertação de CO2 de cada obra, de acordo com as suas
+                    características e
                     comprometemo-nos a plantar o número de árvores necessárias para anular esse carbono.</p>
             </div>
-            <div class="cn-number-section-wrapper">
+            <div class="cn-number-section-wrapper" id="cn-number-section-wrapper">
                 <div class="cn-number-card" data-aos="fade-up">
                     <span class="card-desc-text">Já instalamos</span>
                     <h4 class="number-on-card">120</h4>
@@ -100,7 +102,7 @@
     <section class="green-animation-section">
 
     </section>
-    <section class="movement-section">
+    <section class="movement-section" id="movement-section">
         <div class="container">
             <div class="ms-heading-section">
                 <h6 class="ms-heading-text ml16g">Queres fazer parte deste movimento?</h6>
@@ -180,91 +182,139 @@
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/plugins/noframework.waypoints.js"></script>
     <script>
         AOS.init();
         var textWrapperD = document.querySelector('.ml16d');
         textWrapperD.innerHTML = textWrapperD.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-        anime.timeline({ loop: true })
+        anime.timeline()
             .add({
                 targets: '.ml16d .letter',
                 translateY: [-100, 0],
                 easing: "easeOutExpo",
-                duration: 1400,
+                duration: 1000,
                 delay: (el, i) => 30 * i
             }).add({
                 targets: '.ml16d',
-                opacity: 0,
+                opacity: 1,
                 duration: 1000,
                 easing: "easeOutExpo",
                 delay: 1000
             });
 
-        var textWrapperE = document.querySelector('.ml16e');
-        textWrapperE.innerHTML = textWrapperE.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-        anime.timeline({ loop: true })
-            .add({
-                targets: '.ml16e .letter',
-                translateY: [-100, 0],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 30 * i
-            }).add({
-                targets: '.ml16e',
-                opacity: 0,
-                duration: 1000,
-                easing: "easeOutExpo",
-                delay: 1000
-            });
 
-        var textWrapperF = document.querySelector('.ml16f');
-        textWrapperF.innerHTML = textWrapperF.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-        anime.timeline({ loop: true })
-            .add({
-                targets: '.ml16f .letter',
-                translateY: [-100, 0],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 30 * i
-            }).add({
-                targets: '.ml16f',
-                opacity: 0,
-                duration: 1000,
-                easing: "easeOutExpo",
-                delay: 1000
-            });
+        var waypointE = new Waypoint({
+            element: document.getElementById('mission-section'),
+            handler: function () {
+                $(".ml16e").css("display", "block")
+                var textWrapperE = document.querySelector('.ml16e');
+                textWrapperE.innerHTML = textWrapperE.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-        var textWrapperG = document.querySelector('.ml16g');
-        textWrapperG.innerHTML = textWrapperG.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-        anime.timeline({ loop: true })
-            .add({
-                targets: '.ml16g .letter',
-                translateY: [-100, 0],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 30 * i
-            }).add({
-                targets: '.ml16g',
-                opacity: 0,
-                duration: 1000,
-                easing: "easeOutExpo",
-                delay: 1000
-            });
-
-        $('.number-on-card').each(function () {
-            $(this).prop('Counter', 0).animate({
-                Counter: $(this).text()
-            }, {
-                duration: 1000,
-                easing: 'swing',
-                step: function (now) {
-                    $(this).text(Math.ceil(now));
-                }
-            });
+                anime.timeline()
+                    .add({
+                        targets: '.ml16e .letter',
+                        translateY: [-100, 0],
+                        easing: "easeOutExpo",
+                        duration: 1000,
+                        delay: (el, i) => 30 * i
+                    }).add({
+                        targets: '.ml16e',
+                        opacity: 1,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                waypointE.disable()
+            },
+            group: 'custom-group',
+            offset: '75%'
         });
+
+
+
+
+        var waypointF = new Waypoint({
+            element: document.getElementById('carbon-neutral-section'),
+            handler: function () {
+                $(".ml16f").css("display", "block")
+                var textWrapperF = document.querySelector('.ml16f');
+                textWrapperF.innerHTML = textWrapperF.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+                anime.timeline()
+                    .add({
+                        targets: '.ml16f .letter',
+                        translateY: [-100, 0],
+                        easing: "easeOutExpo",
+                        duration: 1000,
+                        delay: (el, i) => 30 * i
+                    }).add({
+                        targets: '.ml16f',
+                        opacity: 1,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                waypointF.disable()
+            },
+            group: 'custom-group',
+            offset: '75%'
+        });
+
+
+
+        var textWrapperG = new Waypoint({
+            element: document.getElementById('movement-section'),
+            handler: function () {
+                $(".ml16g").css("display", "block")
+                var textWrapperG = document.querySelector('.ml16g');
+                textWrapperG.innerHTML = textWrapperG.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+                anime.timeline()
+                    .add({
+                        targets: '.ml16g .letter',
+                        translateY: [-100, 0],
+                        easing: "easeOutExpo",
+                        duration: 1000,
+                        delay: (el, i) => 30 * i
+                    }).add({
+                        targets: '.ml16g',
+                        opacity: 1,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                textWrapperG.disable()
+            },
+            group: 'custom-group',
+            offset: '75%'
+        });
+
+
+
+        var cardWayPoint = new Waypoint({
+            element: document.getElementById('cn-number-section-wrapper'),
+            handler: function () {
+                console.log("In viewwwwwwwwwwwwws")
+                $('.number-on-card').each(function () {
+                    $(this).prop('Counter', 0).animate({
+                        Counter: $(this).text()
+                    }, {
+                        duration: 1000,
+                        easing: 'swing',
+                        step: function (now) {
+                            $(this).text(Math.ceil(now));
+                        }
+                    });
+                });
+                cardWayPoint.disable()
+            },
+            offset: '75%'
+        });
+
+
     </script>
 </body>
 

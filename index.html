@@ -68,7 +68,7 @@
     <section class="benefits-section" id="benefits-section">
         <div class="container">
             <div class="bs-seaction-heading">
-                <h5 class="bs-heading-text ml16b">Vantagens</h5>
+                <h5 class="bs-heading-text ml16b" >Vantagens</h5>
             </div>
             <div class="bs-vantagens-wrapper">
                 <div data-aos="fade-up" class="bs-vantage-item">
@@ -138,9 +138,9 @@
             </div>
         </div>
     </section>
-    <section class="services-section">
+    <section class="services-section" id="ml16c">
         <div class="bs-seaction-heading">
-            <h5 class="bs-heading-text ml16c">A Helica é a solução ideal para</h5>
+            <h5 class="bs-heading-text ml16c" >A Helica é a solução ideal para</h5>
         </div>
         <div class="services-wrapper">
             <div class="m-container" data-aos="fade-up">
@@ -272,36 +272,6 @@
     <script>
         AOS.init();
 
-        var waypoint = new Waypoint({
-            element: document.getElementById('desc-section'),
-            handler: function () {
-                $(".ml16a").css("display","block")
-                console.log("nowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
-                var textWrapper1 = document.querySelector('.ml16a');
-                textWrapper1.innerHTML = textWrapper1.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-                anime.timeline()
-                    .add({
-                        targets: '.ml16a .letter',
-                        translateY: [-100, 0],
-                        easing: "easeOutExpo",
-                        duration: 1000,
-                        delay: (el, i) => 30 * i
-                    }).add({
-                        targets: '.ml16a',
-                        opacity: 1,
-                        duration: 1000,
-                        easing: "easeOutExpo",
-                        delay: 1000
-                    });
-                    waypoint.disable()
-            },
-            offset: '75%'
-        })
-
-
-
-        // Wrap every letter in a span
         var textWrapper = document.querySelector('.ml16');
         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
@@ -320,41 +290,87 @@
                 delay: 1000
             });
 
-        var textWrapper2 = document.querySelector('.ml16b');
-        textWrapper2.innerHTML = textWrapper2.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        var waypoint = new Waypoint({
+            element: document.getElementById('desc-section'),
+            handler: function () {
+                $(".ml16a").css("display", "block")
+                var textWrapper1 = document.querySelector('.ml16a');
+                textWrapper1.innerHTML = textWrapper1.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-        anime.timeline({ loop: true })
-            .add({
-                targets: '.ml16b .letter',
-                translateY: [-100, 0],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 30 * i
-            }).add({
-                targets: '.ml16b',
-                opacity: 0,
-                duration: 1000,
-                easing: "easeOutExpo",
-                delay: 1000
-            });
+                anime.timeline()
+                    .add({
+                        targets: '.ml16a .letter',
+                        translateY: [-100, 0],
+                        easing: "easeOutExpo",
+                        duration: 1000,
+                        delay: (el, i) => 30 * i
+                    }).add({
+                        targets: '.ml16a',
+                        opacity: 1,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                waypoint.disable()
+            },
+            group: 'custom-group',
+            offset: '75%'
+        });
 
-        var textWrapper3 = document.querySelector('.ml16c');
-        textWrapper3.innerHTML = textWrapper3.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        var waypoint2 = new Waypoint({
+            element: document.getElementById('benefits-section'),
+            handler: function (direction) {
+                var textWrapper2 = document.querySelector('.ml16b');
+                textWrapper2.innerHTML = textWrapper2.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+                $(".ml16b").css("display", "block")
+                anime.timeline()
+                    .add({
+                        targets: '.ml16b .letter',
+                        translateY: [-100, 0],
+                        easing: "easeOutExpo",
+                        duration: 1000,
+                        delay: (el, i) => 30 * i
+                    }).add({
+                        targets: '.ml16b',
+                        opacity: 1,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                    waypoint2.disable()
+            },
+            group: 'custom-group',
+            offset: '75%'
+        })
 
-        anime.timeline({ loop: true })
-            .add({
-                targets: '.ml16c .letter',
-                translateY: [-100, 0],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 30 * i
-            }).add({
-                targets: '.ml16c',
-                opacity: 0,
-                duration: 1000,
-                easing: "easeOutExpo",
-                delay: 1000
-            });
+
+
+        var waypointC = new Waypoint({
+            element: document.getElementById('ml16c'),
+            handler: function () {
+                $(".ml16c").css("display", "block")
+                var textWrapper3 = document.querySelector('.ml16c');
+                textWrapper3.innerHTML = textWrapper3.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+                anime.timeline()
+                    .add({
+                        targets: '.ml16c .letter',
+                        translateY: [-100, 0],
+                        easing: "easeOutExpo",
+                        duration: 1000,
+                        delay: (el, i) => 30 * i
+                    }).add({
+                        targets: '.ml16c',
+                        opacity: 1,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                waypointC.disable()
+            },
+            group: 'custom-group',
+            offset: '90%'
+        });
     </script>
 </body>
 
