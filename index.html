@@ -211,6 +211,9 @@
             </div>
         </div>
     </section>
+    <div class="loader">
+        <img src="assets/img/helica-icons.gif" />
+    </div>
     <footer>
         <div class="container">
             <div class="footer-upper">
@@ -270,9 +273,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/plugins/noframework.waypoints.js"></script>
     <script>
-        AOS.init();
+        
 
         $(document).ready(function () {
+            $(".loader").hide();
+            AOS.init();
             $('.ml16').css("display", "block")
             var textWrapper = document.querySelector('.ml16');
             textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
