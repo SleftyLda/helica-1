@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
@@ -50,23 +51,23 @@
         <div class="container">
             <div class="om-heading-section">
                 <h6 class="om-heading-text ml16e">A nossa missão</h6>
-                <p class="om-heading-desc">A HELICA distingue-se das alternativas tradicionais de fundações ao ser uma
+                <p data-aos="fade-up" class="om-heading-desc">A HELICA distingue-se das alternativas tradicionais de fundações ao ser uma
                     solução verdadeiramente sustentável por diversos motivos.</p>
             </div>
             <div class="mission-card-wrapper">
-                <div class="om-card-item">
+                <div data-aos="fade-up" class="om-card-item">
                     <i class="card-icon utility-icon"></i>
                     <span class="om-card-desc">Materiais utilizados</span>
                 </div>
-                <div class="om-card-item">
+                <div data-aos="fade-up" class="om-card-item">
                     <i class="card-icon waves-icon"></i>
                     <span class="om-card-desc">Fraca disrupção do solo</span>
                 </div>
-                <div class="om-card-item">
+                <div data-aos="fade-up" class="om-card-item">
                     <i class="card-icon drop-icon"></i>
                     <span class="om-card-desc">Inexistência de detritos</span>
                 </div>
-                <div class="om-card-item">
+                <div data-aos="fade-up" class="om-card-item">
                     <i class="card-icon recycle-icon"></i>
                     <span class="om-card-desc">Possibilidade de reutilização e reciclagem</span>
                 </div>
@@ -78,17 +79,17 @@
         <div class="container">
             <div class="section-head">
                 <h5 class="cn-heading-text ml16f">Todas as nossas obras são carbon neutral.</h5>
-                <h4 class="cn-heading-desc">O que é que isso significa?</h4>
-                <p class="cn-desc">Calculamos a libertação de CO2 de cada obra, de acordo com as suas características e
+                <h4 data-aos="fade-up" class="cn-heading-desc">O que é que isso significa?</h4>
+                <p data-aos="fade-up" class="cn-desc">Calculamos a libertação de CO2 de cada obra, de acordo com as suas características e
                     comprometemo-nos a plantar o número de árvores necessárias para anular esse carbono.</p>
             </div>
             <div class="cn-number-section-wrapper">
-                <div class="cn-number-card">
+                <div class="cn-number-card" data-aos="fade-up">
                     <span class="card-desc-text">Já instalamos</span>
                     <h4 class="number-on-card">120</h4>
                     <span class="card-desc-text">HELICA</span>
                 </div>
-                <div class="cn-number-card">
+                <div class="cn-number-card" data-aos="fade-up">
                     <span class="card-desc-text">Já plantamos</span>
                     <h4 class="number-on-card">120</h4>
                     <span class="card-desc-text">árvores</span>
@@ -104,7 +105,7 @@
             <div class="ms-heading-section">
                 <h6 class="ms-heading-text ml16g">Queres fazer parte deste movimento?</h6>
             </div>
-            <div class="movement-event-card">
+            <div class="movement-event-card" data-aos="fade-up">
                 <div class="event-banner">
                     <img src="assets/img/event-banner.png" />
                 </div>
@@ -178,7 +179,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        AOS.init();
         var textWrapperD = document.querySelector('.ml16d');
         textWrapperD.innerHTML = textWrapperD.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 

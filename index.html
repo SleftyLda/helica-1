@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
     <style>
         /* .ml16 {
@@ -50,37 +51,37 @@
             <!-- </div> -->
         </div>
     </nav>
-    <section class="hero-section">
+    <section class="hero-section" id="hero-section">
         <div class="container">
             <div class="hero-content">
                 <h3 class="ml16">Suportar em harmonia com o ambiente</h3>
-                <a class="hero-content-btn">Fala connosco</a>
+                <a data-aos="fade-up" class="hero-content-btn">Fala connosco</a>
             </div>
             <div class="hero-img-wrapper">
                 <img src="assets/img/hero-img.png" />
             </div>
         </div>
     </section>
-    <section class="desc-section">
+    <section class="desc-section" id="desc-section">
         <h4 class="ml16a">A Helica é a solução de suporte sustentável para a sua estrutura</h4>
     </section>
-    <section class="benefits-section">
+    <section class="benefits-section" id="benefits-section">
         <div class="container">
             <div class="bs-seaction-heading">
                 <h5 class="bs-heading-text ml16b">Vantagens</h5>
             </div>
             <div class="bs-vantagens-wrapper">
-                <div class="bs-vantage-item">
+                <div data-aos="fade-up" class="bs-vantage-item">
                     <div class="bs-vantage-head">
                         <i class="icon clock-icon"></i>
                         <span>Rapidez</span>
                     </div>
-                    <div class="bs-vantage-desc">
+                    <div data-aos="fade-up" class="bs-vantage-desc">
                         As propriedades da HELICA e método de aplicação permitem que tenha a solução de fundações
                         executada em poucos dias.
                     </div>
                 </div>
-                <div class="bs-vantage-item">
+                <div data-aos="fade-up" class="bs-vantage-item">
                     <div class="bs-vantage-head">
                         <i class="icon wrench-icon"></i>
                         <span>Apoio técnico</span>
@@ -90,7 +91,7 @@
                         expedita.
                     </div>
                 </div>
-                <div class="bs-vantage-item">
+                <div data-aos="fade-up" class="bs-vantage-item">
                     <div class="bs-vantage-head">
                         <i class="icon star-icon"></i>
                         <span>Simplicidade</span>
@@ -100,7 +101,7 @@
                         e sem esforço.
                     </div>
                 </div>
-                <div class="bs-vantage-item">
+                <div data-aos="fade-up" class="bs-vantage-item">
                     <div class="bs-vantage-head">
                         <i class="icon binoculars-icon"></i>
                         <span>Inovação</span>
@@ -110,7 +111,7 @@
                         executada em poucos dias.
                     </div>
                 </div>
-                <div class="bs-vantage-item">
+                <div data-aos="fade-up" class="bs-vantage-item">
                     <div class="bs-vantage-head">
                         <i class="icon barbell-icon"></i>
                         <span>Resistência</span>
@@ -120,7 +121,7 @@
                         atento da instalação.
                     </div>
                 </div>
-                <div class="bs-vantage-item">
+                <div data-aos="fade-up" class="bs-vantage-item">
                     <div class="bs-vantage-head">
                         <i class="icon tree-icon"></i>
                         <span>Sustentabilidade</span>
@@ -142,7 +143,7 @@
             <h5 class="bs-heading-text ml16c">A Helica é a solução ideal para</h5>
         </div>
         <div class="services-wrapper">
-            <div class="m-container">
+            <div class="m-container" data-aos="fade-up">
                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link service-list-item" id="v-pills-zero-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-zero" type="button" role="tab" aria-controls="v-pills-zero"
@@ -263,14 +264,48 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/plugins/noframework.waypoints.js"></script>
     <script>
+        AOS.init();
+
+        var waypoint = new Waypoint({
+            element: document.getElementById('desc-section'),
+            handler: function () {
+                $(".ml16a").css("display","block")
+                console.log("nowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww")
+                var textWrapper1 = document.querySelector('.ml16a');
+                textWrapper1.innerHTML = textWrapper1.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+                anime.timeline()
+                    .add({
+                        targets: '.ml16a .letter',
+                        translateY: [-100, 0],
+                        easing: "easeOutExpo",
+                        duration: 1000,
+                        delay: (el, i) => 30 * i
+                    }).add({
+                        targets: '.ml16a',
+                        opacity: 1,
+                        duration: 1000,
+                        easing: "easeOutExpo",
+                        delay: 1000
+                    });
+                    waypoint.disable()
+            },
+            offset: '75%'
+        })
+
+
+
         // Wrap every letter in a span
         var textWrapper = document.querySelector('.ml16');
         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-        anime.timeline({ loop: false })
+        anime.timeline()
             .add({
                 targets: '.ml16 .letter',
                 translateY: [-100, 0],
@@ -279,28 +314,12 @@
                 delay: (el, i) => 30 * i
             }).add({
                 targets: '.ml16',
-                opacity: 0,
+                opacity: 1,
                 duration: 1000,
                 easing: "easeOutExpo",
                 delay: 1000
             });
-        var textWrapper1 = document.querySelector('.ml16a');
-        textWrapper1.innerHTML = textWrapper1.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-        anime.timeline({ loop: true })
-            .add({
-                targets: '.ml16a .letter',
-                translateY: [-100, 0],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 30 * i
-            }).add({
-                targets: '.ml16a',
-                opacity: 0,
-                duration: 1000,
-                easing: "easeOutExpo",
-                delay: 1000
-            });
         var textWrapper2 = document.querySelector('.ml16b');
         textWrapper2.innerHTML = textWrapper2.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
