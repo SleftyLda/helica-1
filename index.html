@@ -14,22 +14,14 @@
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
-    <style>
-        /* .ml16 {
-  color: #402d2d;
-  padding: 40px 0;
-  font-weight: 800;
-  font-size: 2em;
-  text-transform: uppercase;
-  letter-spacing: 0.5em;
-  overflow: hidden;
-}
-
-.ml16 .letter {
-  display: inline-block;
-  line-height: 1em;
-} */
-    </style>
+    <!-- <style>
+        
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+            max-height: 400px !important;
+        }
+    </style> -->
 </head>
 
 <body>
@@ -58,7 +50,8 @@
                 <a data-aos="fade-up" class="hero-content-btn">Fala connosco</a>
             </div>
             <div class="hero-img-wrapper">
-                <img src="assets/img/hero-img.png" />
+                <canvas id="canvas1"></canvas>
+                <!-- <img src="assets/img/hero-img.png" /> -->
             </div>
         </div>
     </section>
@@ -380,6 +373,170 @@
             group: 'custom-group',
             offset: '90%'
         });
+    </script>
+    <script type="module">
+
+        import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js";
+        import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/controls/OrbitControls.js";
+        import { FBXLoader } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/FBXLoader.js";
+        window.FBXLoader = FBXLoader;
+        const thv = function (canvasRef, objectUrl) {
+
+            var camera, scene, renderer, mesh, material, stats, plane, planeBuffer, controls, width, height;
+            init();
+            animate();
+
+            console.log('canvasRef.clientWidth, canvasRef.clientHeight = ', canvasRef.clientWidth, canvasRef.clientHeight)
+
+            function init() {
+                width = canvasRef.clientWidth;
+                height = canvasRef.clientHeight;
+                // Renderer.
+                renderer = new THREE.WebGLRenderer({
+                    antialias: true,
+                    shadow: true,
+                    clearColor: true,
+                    canvas: canvasRef
+                });
+                renderer.setSize(width, height);
+                renderer.shadowMap.enabled = true;
+                renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+                renderer.setClearColor("#ddd");
+
+                renderer.setPixelRatio(window.devicePixelRatio);
+
+                renderer.gammaFactor = 2.2;
+                renderer.gammaOutput = true;
+
+                renderer.physicallyCorrectLights = true;
+
+                // document.body.appendChild(renderer.domElement);
+
+                // Create camera.
+                camera = new THREE.PerspectiveCamera(90, width / height, 1, 1000);
+                camera.position.z = 550;
+
+                controls = new OrbitControls(camera, renderer.domElement);
+
+                // Create scene.
+                scene = new THREE.Scene();
+
+                // const light1 = new THREE.PointLight(0xffffff, 1, 100);
+                // light1.position.set(50, 50, 50);
+                // scene.add(light1); 
+
+                //Create ambient light and add to scene.
+                const color = 0xFFFFFF;
+                const intensity = 1;
+                const light = new THREE.AmbientLight(color, intensity);
+                scene.add(light);
+
+                // Create directional light and add to scene.
+                //   const spotLight = new THREE.SpotLight( 0xffffff );
+                //   spotLight.position.set( 100, 100, 100 );
+                //   scene.add(spotLight);
+                //   const spotLightHelper = new THREE.SpotLightHelper( spotLight );
+                //   scene.add( spotLightHelper );
+
+                // Create directional light and add to scene.
+                // var directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+                // directionalLight.position.set(50, 50, 50);
+                // directionalLight.castShadow = false;
+                // directionalLight.shadow.darkness = 0;
+                // directionalLight.shadow.radius = 1;
+                // directionalLight.shadow.camera.top = 600;
+                // directionalLight.shadow.camera.bottom = 600;
+                // directionalLight.shadow.camera.left = 600;
+                // directionalLight.shadow.camera.right = 600;
+                // directionalLight.shadow.camera.near = 3;
+                // directionalLight.shadow.camera.far = 700;
+                // directionalLight.shadow.bias = -0.006;
+                // directionalLight.shadow.mapSize.width = 600;
+                // directionalLight.shadow.mapSize.height = 600;
+                // directionalLight.shadowMapSoft = false;
+                // scene.add(directionalLight);
+                // const helper = new THREE.DirectionalLightHelper(directionalLight, 5);
+                // scene.add(helper);
+
+                //   let planeGeometry = new THREE.PlaneBufferGeometry(1000, 1000);
+                //   planeGeometry.rotateX(-Math.PI / 2);
+
+                //   let planeMaterial = new THREE.ShadowMaterial();
+                //   planeMaterial.opacity = 0.09;
+
+                //   plane = new THREE.Mesh(planeGeometry, planeMaterial);
+                //   plane.position.y = -0;
+                //   scene.add(plane);
+                //   plane.name = "plan";
+
+                //   plane.receiveShadow = true;
+                //   scene.add(new THREE.BoxHelper(plane))
+
+                window.addEventListener('resize', onWindowResize, false);
+
+                addModalToScene(objectUrl)
+            }
+
+            let scope = {};
+            this.scope = scope;
+
+            function addModalToScene(objectUrl) {
+
+                let fbxLoader = new FBXLoader();
+
+                fbxLoader.load(
+                    objectUrl, //1
+                    object => {
+
+                        scene.add(object);
+                        object.traverse(it => {
+                            if (it.isMesh) {
+                                it.receiveShadow = true;
+                                it.castShadow = true;
+                                scope.os = object.scale;
+                                console.log(it)
+                            }
+                        })
+
+                        let boxHelper = new THREE.Box3Helper(new THREE.Box3());
+
+                        boxHelper.visible = true;
+                        boxHelper.box.setFromObject(object);
+
+                        plane.position.y = boxHelper.box.min.y;
+
+                    },
+                    xhr => {
+                        //          console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+                    },
+                    // called when loading has errors
+                    error => {
+                        console.log("An error happened" + error);
+                    }
+                );
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+                // stats.update();
+            }
+
+            function onWindowResize() {
+                width = canvasRef.clientWidth;
+                height = canvasRef.clientHeight;
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(width, height);
+            }
+
+        };
+
+        var canvas1 = document.getElementById('canvas1');
+
+        window._thv1 = new thv(canvas1, "fbx.fbx");
+        //   console.log(_thv1.scope);
+
     </script>
 </body>
 
