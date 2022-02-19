@@ -56,21 +56,23 @@
                     solução verdadeiramente sustentável por diversos motivos.</p>
             </div>
             <div class="mission-card-wrapper">
-                <div class="om-card-item">
-                    <i class="card-icon utility-icon" data-aos="fade-up"></i>
-                    <span class="om-card-desc" data-aos="fade-up">Materiais utilizados</span>
+                <div class="om-card-item" data-aos="fade-up" data-aos-duration="300">
+                    <i class="card-icon utility-icon" data-aos="fade-up" data-aos-duration="600"></i>
+                    <span class="om-card-desc" data-aos="fade-up" data-aos-duration="800">Materiais utilizados</span>
                 </div>
-                <div class="om-card-item">
-                    <i class="card-icon waves-icon" data-aos="fade-up"></i>
-                    <span class="om-card-desc" data-aos="fade-up">Fraca disrupção do solo</span>
+                <div class="om-card-item" data-aos="fade-up" data-aos-duration="300">
+                    <i class="card-icon waves-icon" data-aos="fade-up" data-aos-duration="600"></i>
+                    <span class="om-card-desc" data-aos="fade-up" data-aos-duration="800">Fraca disrupção do solo</span>
                 </div>
-                <div class="om-card-item">
-                    <i class="card-icon drop-icon" data-aos="fade-up"></i>
-                    <span class="om-card-desc" data-aos="fade-up">Inexistência de detritos</span>
+                <div class="om-card-item" data-aos="fade-up" data-aos-duration="300">
+                    <i class="card-icon drop-icon" data-aos="fade-up" data-aos-duration="600"></i>
+                    <span class="om-card-desc" data-aos="fade-up" data-aos-duration="800">Inexistência de
+                        detritos</span>
                 </div>
-                <div class="om-card-item">
-                    <i class="card-icon recycle-icon" data-aos="fade-up"></i>
-                    <span class="om-card-desc" data-aos="fade-up">Possibilidade de reutilização e reciclagem</span>
+                <div class="om-card-item" data-aos="fade-up" data-aos-duration="300">
+                    <i class="card-icon recycle-icon" data-aos="fade-up" data-aos-duration="600"></i>
+                    <span class="om-card-desc" data-aos="fade-up" data-aos-duration="800">Possibilidade de reutilização
+                        e reciclagem</span>
                 </div>
             </div>
         </div>
@@ -86,20 +88,20 @@
                     comprometemo-nos a plantar o número de árvores necessárias para anular esse carbono.</p>
             </div>
             <div class="cn-number-section-wrapper" id="cn-number-section-wrapper">
-                <div class="cn-number-card" data-aos="fade-up">
-                    <span class="card-desc-text">Já instalamos</span>
-                    <h4 class="number-on-card">120</h4>
-                    <span class="card-desc-text">HELICA</span>
+                <div class="cn-number-card" data-aos="fade-up" data-aos-duration="300">
+                    <span class="card-desc-text" data-aos="fade-up" data-aos-duration="500">Já instalamos</span>
+                    <h4 class="number-on-card" data-aos="fade-up" data-aos-duration="600">120</h4>
+                    <span class="card-desc-text" data-aos="fade-up" data-aos-duration="700">HELICA</span>
                 </div>
-                <div class="cn-number-card" data-aos="fade-up">
-                    <span class="card-desc-text">Já plantamos</span>
-                    <h4 class="number-on-card">120</h4>
-                    <span class="card-desc-text">árvores</span>
+                <div class="cn-number-card" data-aos="fade-up" data-aos-duration="300">
+                    <span class="card-desc-text" data-aos="fade-up" data-aos-duration="500">Já plantamos</span>
+                    <h4 class="number-on-card" data-aos="fade-up" data-aos-duration="600">120</h4>
+                    <span class="card-desc-text" data-aos="fade-up" data-aos-duration="700">árvores</span>
                 </div>
             </div>
         </div>
     </section>
-    <section class="green-animation-section">
+    <section class="green-animation-section" id="green-animation-section">
 
     </section>
     <section class="movement-section" id="movement-section">
@@ -183,8 +185,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/plugins/noframework.waypoints.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
     <script>
         AOS.init();
+
+        var animation = bodymovin.loadAnimation({
+            // animationData: { /* ... */ },
+            container: document.getElementById('green-animation-section'), // required
+            path: 'data.json', // required
+            renderer: 'svg', // required
+            loop: true, // optional
+            autoplay: true, // optional
+            name: "Demo Animation", // optional
+        });
+
+
+
         var textWrapperD = document.querySelector('.ml16d');
         textWrapperD.innerHTML = textWrapperD.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 

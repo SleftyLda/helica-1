@@ -64,62 +64,62 @@
                 <h5 class="bs-heading-text ml16b">Vantagens</h5>
             </div>
             <div class="bs-vantagens-wrapper">
-                <div class="bs-vantage-item">
-                    <div class="bs-vantage-head" data-aos="fade-up">
+                <div class="bs-vantage-item" data-aos="fade-up" data-aos-duration="300">
+                    <div class="bs-vantage-head" data-aos="fade-up" data-aos-duration="600">
                         <i class="icon clock-icon"></i>
                         <span>Rapidez</span>
                     </div>
-                    <div data-aos="fade-up" class="bs-vantage-desc">
+                    <div data-aos="fade-up" class="bs-vantage-desc" data-aos-duration="900">
                         As propriedades da HELICA e método de aplicação permitem que tenha a solução de fundações
                         executada em poucos dias.
                     </div>
                 </div>
-                <div class="bs-vantage-item">
-                    <div class="bs-vantage-head" data-aos="fade-up">
+                <div class="bs-vantage-item" data-aos="fade-up" data-aos-duration="300">
+                    <div class="bs-vantage-head" data-aos="fade-up" data-aos-duration="600">
                         <i class="icon wrench-icon"></i>
                         <span>Apoio técnico</span>
                     </div>
-                    <div class="bs-vantage-desc" data-aos="fade-up">
+                    <div class="bs-vantage-desc" data-aos="fade-up" data-aos-duration="900">
                         O nosso gabinete técnico dá-te todo o apoio na definição de solução, de uma forma clara e
                         expedita.
                     </div>
                 </div>
-                <div class="bs-vantage-item">
-                    <div class="bs-vantage-head" data-aos="fade-up">
+                <div class="bs-vantage-item" data-aos="fade-up" data-aos-duration="300">
+                    <div class="bs-vantage-head" data-aos="fade-up" data-aos-duration="600">
                         <i class="icon star-icon"></i>
                         <span>Simplicidade</span>
                     </div>
-                    <div class="bs-vantage-desc" data-aos="fade-up">
+                    <div class="bs-vantage-desc" data-aos="fade-up" data-aos-duration="900">
                         Dispensa maquinaria pesada e grandes disrupções de solo ao utilizar HELICA. Uma aplicação fácil
                         e sem esforço.
                     </div>
                 </div>
-                <div  class="bs-vantage-item">
-                    <div class="bs-vantage-head"data-aos="fade-up">
+                <div  class="bs-vantage-item" data-aos="fade-up" data-aos-duration="300">
+                    <div class="bs-vantage-head"data-aos="fade-up" data-aos-duration="600">
                         <i class="icon binoculars-icon"></i>
                         <span>Inovação</span>
                     </div>
-                    <div class="bs-vantage-desc"data-aos="fade-up">
+                    <div class="bs-vantage-desc"data-aos="fade-up" data-aos-duration="900">
                         As propriedades da HELICA e método de aplicação permitem que tenhas a solução de fundações
                         executada em poucos dias.
                     </div>
                 </div>
-                <div class="bs-vantage-item">
-                    <div class="bs-vantage-head" data-aos="fade-up">
+                <div class="bs-vantage-item" data-aos="fade-up" data-aos-duration="300">
+                    <div class="bs-vantage-head" data-aos="fade-up" data-aos-duration="600">
                         <i class="icon barbell-icon"></i>
                         <span>Resistência</span>
                     </div>
-                    <div class="bs-vantage-desc" data-aos="fade-up">
+                    <div class="bs-vantage-desc" data-aos="fade-up" data-aos-duration="900">
                         Aliamos uma concepção com materiais de alta resistência, proteção duradoura e um acompanhamento
                         atento da instalação.
                     </div>
                 </div>
-                <div class="bs-vantage-item">
-                    <div class="bs-vantage-head" data-aos="fade-up">
+                <div class="bs-vantage-item" data-aos="fade-up" data-aos-duration="300">
+                    <div class="bs-vantage-head" data-aos="fade-up" data-aos-duration="600">
                         <i class="icon tree-icon"></i>
                         <span>Sustentabilidade</span>
                     </div>
-                    <div class="bs-vantage-desc" data-aos="fade-up">
+                    <div class="bs-vantage-desc" data-aos="fade-up" data-aos-duration="900">
                         As HELICA são compostas por um dos materiais mais sustentáveis na construção, são removíveis,
                         reutilizáveis e recicláveis.
                         <a class="bs-vantage-inner-link">
@@ -381,16 +381,23 @@
         import { FBXLoader } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/FBXLoader.js";
         window.FBXLoader = FBXLoader;
         const thv = function (canvasRef, objectUrl) {
+            // canvasRef.clientWidth = 600;
+            // canvasRef.clientHeight = 850;
 
-            var camera, scene, renderer, mesh, material, stats, plane, planeBuffer, controls, width, height;
+            var camera, scene, renderer, meshs, material, stats, plane, planeBuffer, controls, width, height, hover;
+            let mouseX = 0, mouseY = 0;
+            var check = false;
+                        let windowHalfX = 810 / 2;
+            let windowHalfY =  550 / 2;
+
+               // let windowHalfX = window.innerWidth / 2;
+               // let windowHalfY = window.innerHeight / 2;
             init();
             animate();
 
-            console.log('canvasRef.clientWidth, canvasRef.clientHeight = ', canvasRef.clientWidth, canvasRef.clientHeight)
-
             function init() {
-                width = canvasRef.clientWidth;
-                height = canvasRef.clientHeight;
+                width = 810;
+                height = 550;
                 // Renderer.
                 renderer = new THREE.WebGLRenderer({
                     antialias: true,
@@ -401,7 +408,7 @@
                 renderer.setSize(width, height);
                 renderer.shadowMap.enabled = true;
                 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-                renderer.setClearColor("#ddd");
+                renderer.setClearColor("#FFF");
 
                 renderer.setPixelRatio(window.devicePixelRatio);
 
@@ -410,71 +417,59 @@
 
                 renderer.physicallyCorrectLights = true;
 
-                // document.body.appendChild(renderer.domElement);
 
                 // Create camera.
-                camera = new THREE.PerspectiveCamera(90, width / height, 1, 1000);
-                camera.position.z = 550;
+                camera = new THREE.PerspectiveCamera(90, width / height, 0.1, 10000);
 
-                controls = new OrbitControls(camera, renderer.domElement);
-
-                // Create scene.
                 scene = new THREE.Scene();
 
-                // const light1 = new THREE.PointLight(0xffffff, 1, 100);
-                // light1.position.set(50, 50, 50);
-                // scene.add(light1); 
+                const light1 = new THREE.PointLight(0xffffff, 1, 100);
+                light1.position.set(50, 50, 50);
+                scene.add(light1); 
 
                 //Create ambient light and add to scene.
-                const color = 0xFFFFFF;
-                const intensity = 1;
+                const color = 0x606060;
+                const intensity = 10;
                 const light = new THREE.AmbientLight(color, intensity);
                 scene.add(light);
+         
 
-                // Create directional light and add to scene.
-                //   const spotLight = new THREE.SpotLight( 0xffffff );
-                //   spotLight.position.set( 100, 100, 100 );
-                //   scene.add(spotLight);
-                //   const spotLightHelper = new THREE.SpotLightHelper( spotLight );
-                //   scene.add( spotLightHelper );
+                const directionalLight = new THREE.DirectionalLight( 0xffffff, 10 );
+                 scene.add( directionalLight );
 
-                // Create directional light and add to scene.
-                // var directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-                // directionalLight.position.set(50, 50, 50);
-                // directionalLight.castShadow = false;
-                // directionalLight.shadow.darkness = 0;
-                // directionalLight.shadow.radius = 1;
-                // directionalLight.shadow.camera.top = 600;
-                // directionalLight.shadow.camera.bottom = 600;
-                // directionalLight.shadow.camera.left = 600;
-                // directionalLight.shadow.camera.right = 600;
-                // directionalLight.shadow.camera.near = 3;
-                // directionalLight.shadow.camera.far = 700;
-                // directionalLight.shadow.bias = -0.006;
-                // directionalLight.shadow.mapSize.width = 600;
-                // directionalLight.shadow.mapSize.height = 600;
-                // directionalLight.shadowMapSoft = false;
-                // scene.add(directionalLight);
-                // const helper = new THREE.DirectionalLightHelper(directionalLight, 5);
-                // scene.add(helper);
 
-                //   let planeGeometry = new THREE.PlaneBufferGeometry(1000, 1000);
-                //   planeGeometry.rotateX(-Math.PI / 2);
-
-                //   let planeMaterial = new THREE.ShadowMaterial();
-                //   planeMaterial.opacity = 0.09;
-
-                //   plane = new THREE.Mesh(planeGeometry, planeMaterial);
-                //   plane.position.y = -0;
-                //   scene.add(plane);
-                //   plane.name = "plan";
-
-                //   plane.receiveShadow = true;
-                //   scene.add(new THREE.BoxHelper(plane))
+                canvas1.addEventListener( 'mousemove', onDocumentMouseMove );
+                canvas1.addEventListener( 'mouseleave', onDocumentMouseLeave );
 
                 window.addEventListener('resize', onWindowResize, false);
 
                 addModalToScene(objectUrl)
+            }
+
+            function onDocumentMouseMove( event ) {
+           
+check = true;
+// let x = event.clientX - 597;
+// let y = event.clientY - 200;
+
+
+//                 mouseX = ( x - windowHalfX );
+//                 mouseY = ( y - windowHalfY );
+ var rect = event.target.getBoundingClientRect();
+      var x = event.clientX - rect.left; //x position within the element.
+      var y = event.clientY - rect.top;
+                      mouseX = ( x - windowHalfX )*0.02;
+                mouseY = ( y - windowHalfY );
+      // console.log(rect);
+      // console.log(x);
+                // mouseX = ( event.clientX - windowHalfX );
+                // mouseY = ( event.clientY - windowHalfY );
+// console.log("enter");
+            }
+            function onDocumentMouseLeave(evnt){
+                // console.log("leave");
+                check = false;
+
             }
 
             let scope = {};
@@ -487,23 +482,14 @@
                 fbxLoader.load(
                     objectUrl, //1
                     object => {
+                          meshs = object;
+                          meshs.rotation.x = 270;
+                          // meshs.rotation.y = 180;
 
-                        scene.add(object);
-                        object.traverse(it => {
-                            if (it.isMesh) {
-                                it.receiveShadow = true;
-                                it.castShadow = true;
-                                scope.os = object.scale;
-                                console.log(it)
-                            }
-                        })
-
-                        let boxHelper = new THREE.Box3Helper(new THREE.Box3());
-
-                        boxHelper.visible = true;
-                        boxHelper.box.setFromObject(object);
-
-                        plane.position.y = boxHelper.box.min.y;
+                        scene.add(meshs);
+                        camera.position.x =23;
+                        
+                      
 
                     },
                     xhr => {
@@ -518,11 +504,37 @@
 
             function animate() {
                 requestAnimationFrame(animate);
-                renderer.render(scene, camera);
+            render();
                 // stats.update();
+            }
+                            function render() {
+
+                const time = performance.now() * 0.001;
+if(meshs != undefined){
+     
+                // meshs.rotation.x = time * 0.5;
+                meshs.rotation.y = time * 0.5;
+
+
+if (check == true) {
+    // console.log(time);
+                 camera.position.z += ( mouseX - camera.position.z) * 0.05;
+                // camera.position.y += ( - mouseY - camera.position.y) * 0.05;
+            
+                // camera.lookAt( scene.position );   
+}
+            }
+
+
+  camera.lookAt( scene.position );  
+                renderer.render( scene, camera );
+                               // controls.update();
+
             }
 
             function onWindowResize() {
+                windowHalfX = canvas1.width/2;
+                windowHalfY = canvas1.height/2;
                 width = canvasRef.clientWidth;
                 height = canvasRef.clientHeight;
                 camera.aspect = width / height;
@@ -534,8 +546,7 @@
 
         var canvas1 = document.getElementById('canvas1');
 
-        window._thv1 = new thv(canvas1, "fbx.fbx");
-        //   console.log(_thv1.scope);
+        window._thv1 = new thv(canvas1, "untitled2.fbx");
 
     </script>
 </body>

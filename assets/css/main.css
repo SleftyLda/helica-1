@@ -550,7 +550,11 @@ footer {
   height: 527px;
   margin-top: -83px;
   padding-top: 83px;
+  text-align: center;
   background: #f7f8f9;
+}
+.green-animation-section svg{
+  max-width: 812px;
 }
 .movement-section {
   padding: 80px 0;
