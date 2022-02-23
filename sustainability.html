@@ -218,7 +218,7 @@
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script>
-        AOS.init();
+        
         $(document).ready(function () {
             var animation = bodymovin.loadAnimation({
             // animationData: { /* ... */ },
@@ -239,121 +239,9 @@
             autoplay: true, // optional
         });
 
-
-
-        // var textWrapperD = document.querySelector('.ml16d');
-        // textWrapperD.innerHTML = textWrapperD.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-        // anime.timeline()
-        //     .add({
-        //         targets: '.ml16d .letter',
-        //         translateY: [-100, 0],
-        //         easing: "easeOutExpo",
-        //         duration: 1000,
-        //         delay: (el, i) => 30 * i
-        //     }).add({
-        //         targets: '.ml16d',
-        //         opacity: 1,
-        //         duration: 1000,
-        //         easing: "easeOutExpo",
-        //         delay: 1000
-        //     });
-
-
-
-
-        // var waypointE = new Waypoint({
-        //     element: document.getElementById('mission-section'),
-        //     handler: function () {
-        //         $(".ml16e").css("display", "block")
-        //         var textWrapperE = document.querySelector('.ml16e');
-        //         textWrapperE.innerHTML = textWrapperE.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-        //         anime.timeline()
-        //             .add({
-        //                 targets: '.ml16e .letter',
-        //                 translateY: [-100, 0],
-        //                 easing: "easeOutExpo",
-        //                 duration: 1000,
-        //                 delay: (el, i) => 30 * i
-        //             }).add({
-        //                 targets: '.ml16e',
-        //                 opacity: 1,
-        //                 duration: 1000,
-        //                 easing: "easeOutExpo",
-        //                 delay: 1000
-        //             });
-        //         waypointE.disable()
-        //     },
-        //     group: 'custom-group',
-        //     offset: '75%'
-        // });
-
-
-
-
-        // var waypointF = new Waypoint({
-        //     element: document.getElementById('carbon-neutral-section'),
-        //     handler: function () {
-        //         $(".ml16f").css("display", "block")
-        //         var textWrapperF = document.querySelector('.ml16f');
-        //         textWrapperF.innerHTML = textWrapperF.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-        //         anime.timeline()
-        //             .add({
-        //                 targets: '.ml16f .letter',
-        //                 translateY: [-100, 0],
-        //                 easing: "easeOutExpo",
-        //                 duration: 1000,
-        //                 delay: (el, i) => 30 * i
-        //             }).add({
-        //                 targets: '.ml16f',
-        //                 opacity: 1,
-        //                 duration: 1000,
-        //                 easing: "easeOutExpo",
-        //                 delay: 1000
-        //             });
-        //         waypointF.disable()
-        //     },
-        //     group: 'custom-group',
-        //     offset: '75%'
-        // });
-
-
-
-        // var textWrapperG = new Waypoint({
-        //     element: document.getElementById('movement-section'),
-        //     handler: function () {
-        //         $(".ml16g").css("display", "block")
-        //         var textWrapperG = document.querySelector('.ml16g');
-        //         textWrapperG.innerHTML = textWrapperG.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-        //         anime.timeline()
-        //             .add({
-        //                 targets: '.ml16g .letter',
-        //                 translateY: [-100, 0],
-        //                 easing: "easeOutExpo",
-        //                 duration: 1000,
-        //                 delay: (el, i) => 30 * i
-        //             }).add({
-        //                 targets: '.ml16g',
-        //                 opacity: 1,
-        //                 duration: 1000,
-        //                 easing: "easeOutExpo",
-        //                 delay: 1000
-        //             });
-        //         textWrapperG.disable()
-        //     },
-        //     group: 'custom-group',
-        //     offset: '75%'
-        // });
-
-
-
         var cardWayPoint = new Waypoint({
             element: document.getElementById('cn-number-section-wrapper'),
             handler: function () {
-                console.log("In viewwwwwwwwwwwwws")
                 $('.number-on-card').each(function () {
                     $(this).prop('Counter', 0).animate({
                         Counter: $(this).text()

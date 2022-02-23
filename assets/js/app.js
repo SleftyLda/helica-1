@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(".loader").hide();
+    AOS.init();
 
     gsap.registerPlugin(ScrollTrigger);
     gsap.utils.toArray(".revealUp").forEach(function (elem) {

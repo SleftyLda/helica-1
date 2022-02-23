@@ -957,7 +957,8 @@ width: 50%;
   .mobile-menu-header {
     height: 80px;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
     align-items: center;
   }
   .mobile-menu-inner-nav {
