@@ -153,67 +153,67 @@
             <h5 class="bs-heading-text ml16c">A HELICA é a solução ideal para</h5>
         </div>
         <div class="services-wrapper">
-            <div class="container" data-aos="fade-up">
-                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <div class="container d-flex" data-aos="fade-up">
+                <div class="nav flex-column nav-pills me-3" aria-orientation="vertical">
                     <button class="nav-link service-list-item" id="v-pills-zero-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-zero" type="button" role="tab" aria-controls="v-pills-zero"
-                        aria-selected="true">
+                        aria-selected="true"  onmouseover="imgShow1()" onmouseleave="imgHide1()">
                         <span>Habitação</span>
                         <i class="down-arrow-icon"></i>
                     </button>
                     <button class="nav-link service-list-item" id="v-pills-first-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-first" type="button" role="tab" aria-controls="v-pills-first"
-                        aria-selected="false">
+                        aria-selected="false"   onmouseover="imgShow2()" onmouseleave="imgHide2()">
                         <span>Postes e painéis de sinalização</span>
                         <i class="down-arrow-icon"></i>
                     </button>
                     <button class="nav-link service-list-item" id="v-pills-second-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-second" type="button" role="tab" aria-controls="v-pills-second"
-                        aria-selected="false">
+                        aria-selected="false"  onmouseover="imgShow3()" onmouseleave="imgHide3()">
                         <span>Parques fotovoltaicos</span>
                         <i class="down-arrow-icon"></i>
                     </button>
                     <button class="nav-link service-list-item" id="v-pills-third-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-third" type="button" role="tab" aria-controls="v-pills-third"
-                        aria-selected="false">
+                        aria-selected="false"  onmouseover="imgShow4()" onmouseleave="imgHide4()">
                         <span>Passadiços e pontes pedonais</span>
                         <i class="down-arrow-icon"></i>
                     </button>
                     <button class="nav-link service-list-item" id="v-pills-fourth-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-fourth" type="button" role="tab" aria-controls="v-pills-fourth"
-                        aria-selected="false">
+                        aria-selected="false"  onmouseover="imgShow5()" onmouseleave="imgHide5()">
                         <span>Ancoragem de cabos</span>
                         <i class="down-arrow-icon"></i>
                     </button>
                     <button class="nav-link service-list-item" id="v-pills-fifth-tab" data-bs-toggle="pill"
                         data-bs-target="#v-pills-fifth" type="button" role="tab" aria-controls="v-pills-fifth"
-                        aria-selected="false">
+                        aria-selected="false"  onmouseover="imgShow6()" onmouseleave="imgHide6()">
                         <span>Reforços de fundações de betão</span>
                         <i class="down-arrow-icon"></i>
                     </button>
                 </div>
-                <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade service-image-container" id="v-pills-zero" role="tabpanel"
+                <div class="right-image-wrapper">
+                    <div class="tab-pane service-image-container" id="v-pills-zero" role="tabpanel" 
                         aria-labelledby="v-pills-zero-tab">
                         <img src="assets/img/casa.jpg" />
                     </div>
-                    <div class="tab-pane fade service-image-container" id="v-pills-first" role="tabpanel"
+                    <div class="tab-pane service-image-container" id="v-pills-first" role="tabpanel"
                         aria-labelledby="v-pills-first-tab">
                         <img src="assets/img/postes.jpg" />
                     </div>
-                    <div class="tab-pane fade service-image-container" id="v-pills-second" role="tabpanel"
+                    <div class="tab-pane service-image-container" id="v-pills-second" role="tabpanel"
                         aria-labelledby="v-pills-second-tab">
                         <img src="assets/img/fotovoltaico.jpg" />
                     </div>
-                    <div class="tab-pane fade service-image-container" id="v-pills-third" role="tabpanel"
+                    <div class="tab-pane service-image-container" id="v-pills-third" role="tabpanel"
                         aria-labelledby="v-pills-third-tab">
                         <img src="assets/img/passadiço.jpg" />
                     </div>
-                    <div class="tab-pane fade service-image-container" id="v-pills-fourth" role="tabpanel"
+                    <div class="tab-pane service-image-container" id="v-pills-fourth" role="tabpanel"
                         aria-labelledby="v-pills-fourth-tab">
                         <img src="assets/img/cabos.jpg" />
                     </div>
-                    <div class="tab-pane fade service-image-container" id="v-pills-fifth" role="tabpanel"
+                    <div class="tab-pane service-image-container" id="v-pills-fifth" role="tabpanel"
                         aria-labelledby="v-pills-fifth-tab">
                         <img src="assets/img/betao.jpg" />
                     </div>
@@ -284,6 +284,54 @@
     <script src="assets/plugins/noframework.waypoints.js"></script>
     <script src="assets/js/app.js"></script>
     <script>
+
+function imgShow1() {
+  document.getElementById('v-pills-zero').style.display = "block";
+}
+
+function imgHide1() {
+  document.getElementById('v-pills-zero').style.display = "none";
+}
+
+function imgShow2() {
+    console.log("mouse inn")
+  document.getElementById('v-pills-first').style.display = "block";
+}
+
+function imgHide2() {
+    console.log("mouse out")
+  document.getElementById('v-pills-first').style.display = "none";
+}
+
+function imgShow3() {
+  document.getElementById('v-pills-second').style.display = "block";
+}
+
+function imgHide3() {
+  document.getElementById('v-pills-second').style.display = "none";
+}
+
+function imgShow4() {
+  document.getElementById('v-pills-third').style.display = "block";
+}
+
+function imgHide4() {
+  document.getElementById('v-pills-third').style.display = "none";
+}
+function imgShow5() {
+  document.getElementById('v-pills-fourth').style.display = "block";
+}
+
+function imgHide5() {
+  document.getElementById('v-pills-fourth').style.display = "none";
+}
+function imgShow6() {
+  document.getElementById('v-pills-fifth').style.display = "block";
+}
+
+function imgHide6() {
+  document.getElementById('v-pills-fifth').style.display = "none";
+}
         
 
         $(document).ready(function () {
