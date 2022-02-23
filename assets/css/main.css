@@ -25,10 +25,17 @@ body {
   color: #060e9f;
   font-weight: 500;
   font-size: 14px;
-  margin: 0px 10px;
+  /* margin: 0px 10px; */
+  padding: 12px 24px;
   letter-spacing: -0.02em;
   text-decoration: none;
   cursor: pointer;
+  background: #ffffff;
+  border-radius: 100px;
+}
+.menu-item:hover {
+  color: #060e9f;
+  background: #F7F8F9;
 }
 .menu-btn {
   color: white;
@@ -44,7 +51,7 @@ body {
   /* border: 1px solid #060e9f; */
 }
 .menu-btn:hover {
-  background: #18a0fb;
+  background: #2C5AFF;
   font-weight: 500;
   color: #ffffff;
 }
@@ -101,7 +108,7 @@ body {
 }
 .hero-content-btn:hover {
   color: #ffffff;
-  background: #18a0fb;
+  background: #2C5AFF;
 }
 .desc-section {
   height: 336px;
@@ -236,7 +243,7 @@ body {
   cursor: pointer;
 }
 .bs-vantage-inner-link:hover {
-  background: #18a0fb;
+  background: #73CE00;
   color: white;
 }
 .bs-seaction-heading {
@@ -296,7 +303,7 @@ footer {
   font-size: 12px;
   line-height: 18px;
   letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: rgba(255, 255, 255, 1) !important;
   display: block;
   cursor: pointer;
   text-decoration: none;
@@ -318,7 +325,10 @@ footer {
   letter-spacing: -0.02em;
   color: #ffffff;
   margin-bottom: 8px;
-  cursor: pointer;
+  cursor: default;
+}
+.contact-menu:hover {
+  color: #ffffff;
 }
 .fu-social-item {
   display: block;
@@ -330,6 +340,9 @@ footer {
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
+}
+.fu-social-item:hover {
+  color: rgba(255, 255, 255, 1);
 }
 .footer-lower {
   height: 80px;
@@ -674,11 +687,11 @@ width: 50%;
   border-radius: 100px;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid #00033a;
+  /* border: 1px solid #00033a; */
 }
 .add-to-calender-btn:hover {
   color: #ffffff;
-  background: #18a0fb;
+  background: #73CE00;
   /* border-color: #00033a; */
 }
 
@@ -900,6 +913,7 @@ width: 50%;
     overflow-x: hidden;
   }
 
+  
   .custom-container,
   .hero-section .container,
   .benefits-section .container,
@@ -1092,6 +1106,9 @@ width: 50%;
   }
   .om-card-item {
     padding: 27px 0;
+  }
+  .om-card-desc{
+    text-align: center;
   }
   .carbon-neutral-section {
     padding-top: 170px;
