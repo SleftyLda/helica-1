@@ -63,7 +63,7 @@
     <section class="hero-section green-hero-section">
         <div class="container">
             <div class="hero-content green-hero-content">
-                <h3 class="ml16d">Vamos plantar 10 000 árvores em Portugal</h3>
+                <h3 class="revealUp">Vamos plantar 10 000 árvores em Portugal</h3>
             </div>
 
         </div>
@@ -75,7 +75,7 @@
     <section class="mission-section" id="mission-section">
         <div class="container">
             <div class="om-heading-section">
-                <h6 class="om-heading-text ml16e">A nossa missão</h6>
+                <h6 class="om-heading-text revealUp">A nossa missão</h6>
                 <p data-aos="fade-up" class="om-heading-desc">A HELICA distingue-se das alternativas tradicionais de
                     fundações ao ser uma
                     solução verdadeiramente sustentável por diversos motivos.</p>
@@ -106,7 +106,7 @@
     <section class="carbon-neutral-section" id="carbon-neutral-section">
         <div class="container">
             <div class="section-head">
-                <h5 class="cn-heading-text ml16f">Todas as nossas obras são carbon neutral.</h5>
+                <h5 class="cn-heading-text revealUp">Todas as nossas obras são carbon neutral.</h5>
                 <h4 data-aos="fade-up" class="cn-heading-desc">O que é que isso significa?</h4>
                 <p data-aos="fade-up" class="cn-desc">Calculamos a libertação de CO2 de cada obra, de acordo com as suas
                     características e
@@ -132,7 +132,7 @@
     <section class="movement-section" id="movement-section">
         <div class="container">
             <div class="ms-heading-section">
-                <h6 class="ms-heading-text ml16g">Queres fazer parte deste movimento?</h6>
+                <h6 class="ms-heading-text revealUp">Queres fazer parte deste movimento?</h6>
             </div>
             <div class="movement-event-card" data-aos="fade-up" data-aos-duration="700">
                 <div class="event-banner">
@@ -214,11 +214,13 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/plugins/noframework.waypoints.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script>
         AOS.init();
-
-        var animation = bodymovin.loadAnimation({
+        $(document).ready(function () {
+            var animation = bodymovin.loadAnimation({
             // animationData: { /* ... */ },
             container: document.getElementById('green-hero-img-wrapper'), // required
             path: 'data-hero.json', // required
@@ -226,6 +228,8 @@
             loop: false, // optional
             autoplay: true, // optional
         });
+        })
+        
         var animationOne = bodymovin.loadAnimation({
             // animationData: { /* ... */ },
             container: document.getElementById('green-animation-section'), // required
@@ -237,112 +241,112 @@
 
 
 
-        var textWrapperD = document.querySelector('.ml16d');
-        textWrapperD.innerHTML = textWrapperD.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        // var textWrapperD = document.querySelector('.ml16d');
+        // textWrapperD.innerHTML = textWrapperD.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-        anime.timeline()
-            .add({
-                targets: '.ml16d .letter',
-                translateY: [-100, 0],
-                easing: "easeOutExpo",
-                duration: 1000,
-                delay: (el, i) => 30 * i
-            }).add({
-                targets: '.ml16d',
-                opacity: 1,
-                duration: 1000,
-                easing: "easeOutExpo",
-                delay: 1000
-            });
-
-
-
-
-        var waypointE = new Waypoint({
-            element: document.getElementById('mission-section'),
-            handler: function () {
-                $(".ml16e").css("display", "block")
-                var textWrapperE = document.querySelector('.ml16e');
-                textWrapperE.innerHTML = textWrapperE.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-                anime.timeline()
-                    .add({
-                        targets: '.ml16e .letter',
-                        translateY: [-100, 0],
-                        easing: "easeOutExpo",
-                        duration: 1000,
-                        delay: (el, i) => 30 * i
-                    }).add({
-                        targets: '.ml16e',
-                        opacity: 1,
-                        duration: 1000,
-                        easing: "easeOutExpo",
-                        delay: 1000
-                    });
-                waypointE.disable()
-            },
-            group: 'custom-group',
-            offset: '75%'
-        });
+        // anime.timeline()
+        //     .add({
+        //         targets: '.ml16d .letter',
+        //         translateY: [-100, 0],
+        //         easing: "easeOutExpo",
+        //         duration: 1000,
+        //         delay: (el, i) => 30 * i
+        //     }).add({
+        //         targets: '.ml16d',
+        //         opacity: 1,
+        //         duration: 1000,
+        //         easing: "easeOutExpo",
+        //         delay: 1000
+        //     });
 
 
 
 
-        var waypointF = new Waypoint({
-            element: document.getElementById('carbon-neutral-section'),
-            handler: function () {
-                $(".ml16f").css("display", "block")
-                var textWrapperF = document.querySelector('.ml16f');
-                textWrapperF.innerHTML = textWrapperF.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        // var waypointE = new Waypoint({
+        //     element: document.getElementById('mission-section'),
+        //     handler: function () {
+        //         $(".ml16e").css("display", "block")
+        //         var textWrapperE = document.querySelector('.ml16e');
+        //         textWrapperE.innerHTML = textWrapperE.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-                anime.timeline()
-                    .add({
-                        targets: '.ml16f .letter',
-                        translateY: [-100, 0],
-                        easing: "easeOutExpo",
-                        duration: 1000,
-                        delay: (el, i) => 30 * i
-                    }).add({
-                        targets: '.ml16f',
-                        opacity: 1,
-                        duration: 1000,
-                        easing: "easeOutExpo",
-                        delay: 1000
-                    });
-                waypointF.disable()
-            },
-            group: 'custom-group',
-            offset: '75%'
-        });
+        //         anime.timeline()
+        //             .add({
+        //                 targets: '.ml16e .letter',
+        //                 translateY: [-100, 0],
+        //                 easing: "easeOutExpo",
+        //                 duration: 1000,
+        //                 delay: (el, i) => 30 * i
+        //             }).add({
+        //                 targets: '.ml16e',
+        //                 opacity: 1,
+        //                 duration: 1000,
+        //                 easing: "easeOutExpo",
+        //                 delay: 1000
+        //             });
+        //         waypointE.disable()
+        //     },
+        //     group: 'custom-group',
+        //     offset: '75%'
+        // });
 
 
 
-        var textWrapperG = new Waypoint({
-            element: document.getElementById('movement-section'),
-            handler: function () {
-                $(".ml16g").css("display", "block")
-                var textWrapperG = document.querySelector('.ml16g');
-                textWrapperG.innerHTML = textWrapperG.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-                anime.timeline()
-                    .add({
-                        targets: '.ml16g .letter',
-                        translateY: [-100, 0],
-                        easing: "easeOutExpo",
-                        duration: 1000,
-                        delay: (el, i) => 30 * i
-                    }).add({
-                        targets: '.ml16g',
-                        opacity: 1,
-                        duration: 1000,
-                        easing: "easeOutExpo",
-                        delay: 1000
-                    });
-                textWrapperG.disable()
-            },
-            group: 'custom-group',
-            offset: '75%'
-        });
+        // var waypointF = new Waypoint({
+        //     element: document.getElementById('carbon-neutral-section'),
+        //     handler: function () {
+        //         $(".ml16f").css("display", "block")
+        //         var textWrapperF = document.querySelector('.ml16f');
+        //         textWrapperF.innerHTML = textWrapperF.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+        //         anime.timeline()
+        //             .add({
+        //                 targets: '.ml16f .letter',
+        //                 translateY: [-100, 0],
+        //                 easing: "easeOutExpo",
+        //                 duration: 1000,
+        //                 delay: (el, i) => 30 * i
+        //             }).add({
+        //                 targets: '.ml16f',
+        //                 opacity: 1,
+        //                 duration: 1000,
+        //                 easing: "easeOutExpo",
+        //                 delay: 1000
+        //             });
+        //         waypointF.disable()
+        //     },
+        //     group: 'custom-group',
+        //     offset: '75%'
+        // });
+
+
+
+        // var textWrapperG = new Waypoint({
+        //     element: document.getElementById('movement-section'),
+        //     handler: function () {
+        //         $(".ml16g").css("display", "block")
+        //         var textWrapperG = document.querySelector('.ml16g');
+        //         textWrapperG.innerHTML = textWrapperG.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+        //         anime.timeline()
+        //             .add({
+        //                 targets: '.ml16g .letter',
+        //                 translateY: [-100, 0],
+        //                 easing: "easeOutExpo",
+        //                 duration: 1000,
+        //                 delay: (el, i) => 30 * i
+        //             }).add({
+        //                 targets: '.ml16g',
+        //                 opacity: 1,
+        //                 duration: 1000,
+        //                 easing: "easeOutExpo",
+        //                 delay: 1000
+        //             });
+        //         textWrapperG.disable()
+        //     },
+        //     group: 'custom-group',
+        //     offset: '75%'
+        // });
 
 
 

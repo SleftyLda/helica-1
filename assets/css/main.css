@@ -74,7 +74,7 @@ body {
   float: right;
   position: absolute;
   right: -415px;
-  top: -120px;
+  bottom: -100px;
   max-width: 90%;
 }
 .hero-content {
@@ -94,6 +94,7 @@ body {
   color: #73ce00;
   width: 460px;
   line-height: 60px;
+  opacity: 0;
 }
 .hero-content-btn {
   padding: 14px 32px;
@@ -125,6 +126,7 @@ body {
   color: #060e9f;
   letter-spacing: -0.02em;
   overflow: hidden;
+  opacity: 0;
 }
 .benefits-section {
   padding: 160px 0 185px;
@@ -141,6 +143,7 @@ body {
   color: #060e9f;
   overflow: hidden;
   padding-bottom: 20px;
+  opacity: 0;
 }
 .bs-heading-text:after {
   content: "";
@@ -436,6 +439,7 @@ width: 50%;
   color: #73ce00;
   margin-bottom: 56px;
   overflow: hidden;
+  opacity: 0;
 }
 .om-heading-text:after {
   content: "";
@@ -514,6 +518,7 @@ width: 50%;
   letter-spacing: -0.02em;
   color: #73ce00;
   overflow: hidden;
+  opacity: 0;
 }
 .cn-heading-desc {
   position: relative;
@@ -607,6 +612,7 @@ width: 50%;
   color: #73ce00;
   margin-bottom: 56px;
   overflow: hidden;
+  opacity: 0;
 }
 .ms-heading-text:after {
   content: "";
@@ -1006,21 +1012,23 @@ width: 50%;
     width: 100%;
   }
   .hero-content.green-hero-content h3 {
-    width: 80%;
+    width: 90%;
   }
   .hero-img-wrapper {
     width: 100%;
   }
   .hero-img-wrapper.green-hero-img-wrapper {
-    bottom: -100px;
+    bottom: -60px;
     top: unset;
-    right: -15px;
+    right: -115px;
+    max-width: 100%;
   }
   .hero-img-wrapper img {
     width: 100%;
   }
   .desc-section {
     height: 182px;
+    width: 100%;
   }
   .desc-section h4 {
     font-size: 22px;
