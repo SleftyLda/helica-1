@@ -65,8 +65,8 @@
         <div class="container">
             <div class="hero-content">
                 <h3 class=" revealUp">Suportar em harmonia com o ambiente</h3>
-                <a data-aos="fade-up" class="hero-content-btn d-hide-mobile" href="#footer">Fala connosco</a>
-                <a data-aos="fade-up" class="hero-content-btn d-show-mobile" href="contact.html">Fala connosco</a>
+                <a class="hero-content-btn d-hide-mobile" href="#footer">Fala connosco</a>
+                <a class="hero-content-btn d-show-mobile" href="contact.html">Fala connosco</a>
             </div>
             <div class="hero-img-wrapper">
                 <canvas id="canvas1"></canvas>
@@ -259,9 +259,13 @@
                                     <span>info@helica.pt</span>
                                 </a>
                             </div>
-                            <a class="fu-social-item" href="https://www.linkedin.com/company/helicaprofile/" target="_blank">LinkedIn</a>
-                            <a class="fu-social-item" href="https://www.instagram.com/helica.profile/" target="_blank">Instagram</a>
-                            <a class="fu-social-item" href="https://www.youtube.com/channel/UCR121SObFf5X96PeOwR4ByA/featured" target="_blank">Youtube</a>
+                            <a class="fu-social-item" href="https://www.linkedin.com/company/helicaprofile/"
+                                target="_blank">LinkedIn</a>
+                            <a class="fu-social-item" href="https://www.instagram.com/helica.profile/"
+                                target="_blank">Instagram</a>
+                            <a class="fu-social-item"
+                                href="https://www.youtube.com/channel/UCR121SObFf5X96PeOwR4ByA/featured"
+                                target="_blank">Youtube</a>
                         </div>
                     </div>
                 </div>
@@ -291,18 +295,18 @@
     <script>
         $(".menu-btn,.hero-content-btn.d-hide-mobile").on("click", function (e) {
             console.log("clicked")
-          var i = $(this.getAttribute("href"));
-          i.length &&
-            (e.preventDefault(),
-            $("html, body").animate(
-              {
-                scrollTop: i.offset().top - 60,
-              },
-              600
-            ));
+            var i = $(this.getAttribute("href"));
+            i.length &&
+                (e.preventDefault(),
+                    $("html, body").animate(
+                        {
+                            scrollTop: i.offset().top - 60,
+                        },
+                        600
+                    ));
         });
-      </script>
-    
+    </script>
+
     <script>
         function imgShow1() {
             document.getElementById('v-pills-zero').style.display = "block";
@@ -365,8 +369,8 @@
             var camera, scene, renderer, meshs, material, stats, plane, planeBuffer, controls, width, height, hover;
             let mouseX = 0, mouseY = 0;
             var check = false;
-            let windowHalfX = 810 / 2;
-            let windowHalfY = 550 / 2;
+            let windowHalfX = 910 / 2;
+            let windowHalfY = 750 / 2;
 
             // let windowHalfX = window.innerWidth / 2;
             // let windowHalfY = window.innerHeight / 2;
@@ -374,8 +378,8 @@
             animate();
 
             function init() {
-                width = 810;
-                height = 550;
+                width = 910;
+                height = 750;
                 // Renderer.
                 renderer = new THREE.WebGLRenderer({
                     antialias: true,
@@ -427,22 +431,13 @@
             function onDocumentMouseMove(event) {
 
                 check = true;
-                // let x = event.clientX - 597;
-                // let y = event.clientY - 200;
 
-
-                //                 mouseX = ( x - windowHalfX );
-                //                 mouseY = ( y - windowHalfY );
                 var rect = event.target.getBoundingClientRect();
                 var x = event.clientX - rect.left; //x position within the element.
                 var y = event.clientY - rect.top;
                 mouseX = (x - windowHalfX) * 0.02;
                 mouseY = (y - windowHalfY);
-                // console.log(rect);
-                // console.log(x);
-                // mouseX = ( event.clientX - windowHalfX );
-                // mouseY = ( event.clientY - windowHalfY );
-                // console.log("enter");
+
             }
             function onDocumentMouseLeave(evnt) {
                 // console.log("leave");
@@ -461,7 +456,8 @@
                     objectUrl, //1
                     object => {
                         meshs = object;
-                        meshs.rotation.x = 270;
+                        meshs.rotation.x = -120;
+                        meshs.scale.set(1.1, 1.1, 1.1);
                         // meshs.rotation.y = 180;
 
                         scene.add(meshs);
@@ -483,23 +479,23 @@
             function animate() {
                 requestAnimationFrame(animate);
                 render();
-                // stats.update();
+
             }
             function render() {
 
                 const time = performance.now() * 0.001;
                 if (meshs != undefined) {
 
-                    // meshs.rotation.x = time * 0.5;
+
                     meshs.rotation.y = time * 0.5;
 
 
                     if (check == true) {
-                        // console.log(time);
-                        camera.position.z += (mouseX - camera.position.z) * 0.05;
-                        // camera.position.y += ( - mouseY - camera.position.y) * 0.05;
 
-                        // camera.lookAt( scene.position );   
+                        camera.position.z += (mouseX - camera.position.z) * 0.05;
+
+
+
                     }
                 }
 

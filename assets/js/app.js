@@ -1,12 +1,16 @@
-$(document).ready(function () {
+setTimeout(function() { 
     $(".loader").hide();
+}, 1000);
+$(document).ready(function () {
+    
+    
     AOS.init();
 
     gsap.registerPlugin(ScrollTrigger);
     gsap.utils.toArray(".revealUp").forEach(function (elem) {
         ScrollTrigger.create({
             trigger: elem,
-            start: "top 80%",
+            start: "top 90%",
             // end: "bottom 20%",
             markers: false,
             onEnter: function () {
@@ -14,7 +18,7 @@ $(document).ready(function () {
                     elem,
                     { y: 100, autoAlpha: 0 },
                     {
-                        duration: 1.25,
+                        duration: 1,
                         y: 0,
                         autoAlpha: 1,
                         ease: "back",
@@ -30,7 +34,7 @@ $(document).ready(function () {
                     elem,
                     { y: 100, autoAlpha: 0 },
                     {
-                        duration: 1.25,
+                        duration: 1,
                         y: 0,
                         autoAlpha: 1,
                         ease: "back",
