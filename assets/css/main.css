@@ -1014,6 +1014,7 @@ width: 50%;
   }
   .hero-content.green-hero-content h3 {
     width: 90%;
+    line-height: 42px;
   }
   .hero-img-wrapper {
     width: 100%;
@@ -1194,10 +1195,22 @@ width: 50%;
     margin-bottom: 24px;
   }
 }
+@media screen and (max-width: 992px) and (min-width: 768px){
+  .hero-img-wrapper.green-hero-img-wrapper{
+    max-width: 75%;
+  }
+}
 @media screen and (max-width: 576px) {
   .service-image-container img{
     height: unset;
     margin-left: -11px;
     width: calc(100vw + 0px);
+  }
+  #green-hero-img-wrapper{
+    right: -10px;
+    bottom: -90px;
+  }
+  #green-hero-img-wrapper svg{
+    width: 150% !important;
   }
 }
