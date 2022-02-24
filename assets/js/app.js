@@ -7,7 +7,7 @@ $(document).ready(function () {
         ScrollTrigger.create({
             trigger: elem,
             start: "top 80%",
-            end: "bottom 20%",
+            // end: "bottom 20%",
             markers: false,
             onEnter: function () {
                 gsap.fromTo(
@@ -53,6 +53,7 @@ $(document).ready(function () {
     });
 
     $('.hamburger-icon-outer').click(function () {
+        console.log("Ordered to open the menu")
         $(this).toggleClass('open');
         $(".mobile-menu").toggleClass('open');
     });
@@ -60,4 +61,5 @@ $(document).ready(function () {
         $(".hamburger-icon-outer").toggleClass('open');
         $(".mobile-menu").toggleClass('open');
     });
+    
 });

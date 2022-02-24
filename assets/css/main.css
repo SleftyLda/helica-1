@@ -909,6 +909,9 @@ width: 50%;
   color: #060e9f;
   text-decoration: none;
 }
+.d-show-mobile{
+  display: none;
+}
 @media screen and (min-width: 993px) {
   .mobile-menu {
     display: none;
@@ -918,7 +921,12 @@ width: 50%;
   body {
     overflow-x: hidden;
   }
-
+  .d-hide-mobile {
+    display: none;
+  }
+.d-show-mobile{
+  display: inline-block;
+}
   
   .custom-container,
   .hero-section .container,
@@ -1105,6 +1113,10 @@ width: 50%;
     width: 147px;
     height: 40px;
   }
+  .fm-btn:hover{
+    background: #2C5AFF;
+    color: #ffffff;
+  }
   .om-heading-section {
     margin-bottom: 32px;
   }
@@ -1203,7 +1215,7 @@ width: 50%;
 @media screen and (max-width: 576px) {
   .service-image-container img{
     height: unset;
-    margin-left: -11px;
+    margin-left: -12px;
     width: calc(100vw + 0px);
   }
   #green-hero-img-wrapper{
