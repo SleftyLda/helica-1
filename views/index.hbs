@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Helica é a solução de suporte sustentável para a sua estrutura."/>
+    <meta name="DC.title" content="Helica - Suporta em harmonica com o ambiente">
+
     <title> Home | Helica</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -358,171 +361,180 @@
     </script>
     <script type="module">
 
-        import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js";
-        import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/controls/OrbitControls.js";
-        import { FBXLoader } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/FBXLoader.js";
-        window.FBXLoader = FBXLoader;
-        const thv = function (canvasRef, objectUrl) {
-            // canvasRef.clientWidth = 600;
-            // canvasRef.clientHeight = 850;
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js";
+    import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/controls/OrbitControls.js";
+    import { FBXLoader } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/loaders/FBXLoader.js";
+    window.FBXLoader = FBXLoader;
+    const thv = function (canvasRef, objectUrl) {
+        // canvasRef.clientWidth = 600;
+        // canvasRef.clientHeight = 850;
 
-            var camera, scene, renderer, meshs, material, stats, plane, planeBuffer, controls, width, height, hover;
-            let mouseX = 0, mouseY = 0;
-            var check = false;
-            let windowHalfX = 910 / 2;
-            let windowHalfY = 750 / 2;
+        var camera, scene, renderer, meshs,mesh, material, mixer, stats, plane, planeBuffer, controls, width, height, hover, clock = new THREE.Clock();
+        let mouseX = 0, mouseY = 0;
+        var check = false;
+        let windowHalfX = 910 / 2;
+        let windowHalfY = 750 / 2;
 
-            // let windowHalfX = window.innerWidth / 2;
-            // let windowHalfY = window.innerHeight / 2;
-            init();
-            animate();
+        // let windowHalfX = window.innerWidth / 2;
+        // let windowHalfY = window.innerHeight / 2;
+        init();
+        animate();
 
-            function init() {
-                width = 910;
-                height = 750;
-                // Renderer.
-                renderer = new THREE.WebGLRenderer({
-                    antialias: true,
-                    shadow: true,
-                    clearColor: true,
-                    canvas: canvasRef
-                });
-                renderer.setSize(width, height);
-                renderer.shadowMap.enabled = true;
-                renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-                renderer.setClearColor("#FFF");
+        function init() {
+            width = 910;
+            height = 750;
+            // Renderer.
+            renderer = new THREE.WebGLRenderer({
+                antialias: true,
+                shadow: true,
+                clearColor: true,
+                canvas: canvasRef
+            });
+            renderer.setSize(width, height);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.setClearColor("#FFF");
 
-                renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setPixelRatio(window.devicePixelRatio);
 
-                renderer.gammaFactor = 2.2;
-                renderer.gammaOutput = true;
+            renderer.gammaFactor = 2.2;
+            renderer.gammaOutput = true;
 
-                renderer.physicallyCorrectLights = true;
-
-
-                // Create camera.
-                camera = new THREE.PerspectiveCamera(90, width / height, 0.1, 10000);
-
-                scene = new THREE.Scene();
-
-                const light1 = new THREE.PointLight(0xffffff, 1, 100);
-                light1.position.set(50, 50, 50);
-                scene.add(light1);
-
-                //Create ambient light and add to scene.
-                const color = 0x606060;
-                const intensity = 10;
-                const light = new THREE.AmbientLight(color, intensity);
-                scene.add(light);
+            renderer.physicallyCorrectLights = true;
 
 
-                const directionalLight = new THREE.DirectionalLight(0xffffff, 10);
-                scene.add(directionalLight);
+            // Create camera.
+            camera = new THREE.PerspectiveCamera(90, width / height, 0.1, 10000);
 
+            scene = new THREE.Scene();
 
-                canvas1.addEventListener('mousemove', onDocumentMouseMove);
-                canvas1.addEventListener('mouseleave', onDocumentMouseLeave);
+            const light1 = new THREE.PointLight(0xffffff, 1, 100);
+            light1.position.set(50, 50, 50);
+            scene.add(light1);
 
-                window.addEventListener('resize', onWindowResize, false);
-
-                addModalToScene(objectUrl)
-            }
-
-            function onDocumentMouseMove(event) {
-
-                check = true;
-
-                var rect = event.target.getBoundingClientRect();
-                var x = event.clientX - rect.left; //x position within the element.
-                var y = event.clientY - rect.top;
-                mouseX = (x - windowHalfX) * 0.02;
-                mouseY = (y - windowHalfY);
-
-            }
-            function onDocumentMouseLeave(evnt) {
-                // console.log("leave");
-                check = false;
-
-            }
-
-            let scope = {};
-            this.scope = scope;
-
-            function addModalToScene(objectUrl) {
-
-                let fbxLoader = new FBXLoader();
-
-                fbxLoader.load(
-                    objectUrl, //1
-                    object => {
-                        meshs = object;
-                        meshs.rotation.x = -120;
-                        meshs.scale.set(1.1, 1.1, 1.1);
-                        // meshs.rotation.y = 180;
-
-                        scene.add(meshs);
-                        camera.position.x = 23;
+            //Create ambient light and add to scene.
+            const color = 0x606060;
+            const intensity = 10;
+            const light = new THREE.AmbientLight(color, intensity);
+            scene.add(light);
 
 
 
-                    },
-                    xhr => {
-                        //          console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-                    },
-                    // called when loading has errors
-                    error => {
-                        console.log("An error happened" + error);
-                    }
-                );
-            }
-
-            function animate() {
-                requestAnimationFrame(animate);
-                render();
-
-            }
-            function render() {
-
-                const time = performance.now() * 0.001;
-                if (meshs != undefined) {
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 10);
+            scene.add(directionalLight);
 
 
-                    meshs.rotation.y = time * 0.5;
+            canvas1.addEventListener('mousemove', onDocumentMouseMove);
+            canvas1.addEventListener('mouseleave', onDocumentMouseLeave);
+
+            window.addEventListener('resize', onWindowResize, false);
+
+            addModalToScene(objectUrl)
+        }
+
+        function onDocumentMouseMove(event) {
+
+            check = true;
+
+            var rect = event.target.getBoundingClientRect();
+            var x = event.clientX - rect.left; //x position within the element.
+            var y = event.clientY - rect.top;
+            mouseX = (x - windowHalfX) * 0.02;
+            mouseY = (y - windowHalfY);
+
+        }
+        function onDocumentMouseLeave(evnt) {
+            // console.log("leave");
+            check = false;
+
+        }
+
+        let scope = {};
+        this.scope = scope;
+
+        function addModalToScene(objectUrl) {
+
+            let fbxLoader = new FBXLoader();
+
+            fbxLoader.load(
+                objectUrl, //1
+                object => {
+                    meshs = object;
+                    mesh = object;
+                    meshs.rotation.x = -120;
+                    mesh.rotation.y = -150;
+                    meshs.scale.set(1.1, 1.1, 1.1);
+                    mesh.scale.set(1.1, 1.1, 1.1);
+                    // meshs.rotation.y = 180;
+
+                    scene.add(meshs,mesh);
+                    camera.position.x = 23;
 
 
-                    if (check == true) {
 
-                        camera.position.z += (mouseX - camera.position.z) * 0.05;
-
-
-
-                    }
+                },
+                xhr => {
+                    //          console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+                },
+                // called when loading has errors
+                error => {
+                    console.log("An error happened" + error);
                 }
+            );
+        }
 
-
-                camera.lookAt(scene.position);
-                renderer.render(scene, camera);
-                // controls.update();
-
+        function animate() {
+            requestAnimationFrame(animate);
+            if (mesh) {
+                mesh.position.y = Math.sin(Date.now() * 0.005) * Math.PI * 0.1;
             }
 
-            function onWindowResize() {
-                windowHalfX = canvas1.width / 2;
-                windowHalfY = canvas1.height / 2;
-                width = canvasRef.clientWidth;
-                height = canvasRef.clientHeight;
-                camera.aspect = width / height;
-                camera.updateProjectionMatrix();
-                renderer.setSize(width, height);
+            render();
+
+        }
+        function render() {
+
+            const time = performance.now() * 0.005;
+            if (meshs != undefined) {
+
+
+                meshs.rotation.y = time * 0.5;
+
+
+                if (check == true) {
+
+                    camera.position.z += (mouseX - camera.position.z) * 0.05;
+
+
+
+                }
             }
 
-        };
 
-        var canvas1 = document.getElementById('canvas1');
+            camera.lookAt(scene.position);
+            renderer.render(scene, camera);
+            // controls.update();
 
-        window._thv1 = new thv(canvas1, "/helica.fbx");
+        }
 
-    </script>
+        function onWindowResize() {
+            windowHalfX = canvas1.width / 2;
+            windowHalfY = canvas1.height / 2;
+            width = canvasRef.clientWidth;
+            height = canvasRef.clientHeight;
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+            renderer.setSize(width, height);
+        }
+
+    };
+
+    var canvas1 = document.getElementById('canvas1');
+
+    window._thv1 = new thv(canvas1, "helica.fbx");
+
+</script>
+
 </body>
 
 </html>

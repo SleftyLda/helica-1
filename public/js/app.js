@@ -1,18 +1,18 @@
-setTimeout(function() { 
+setTimeout(function () {
     $(".loader").hide();
 }, 1000);
 $(document).ready(function () {
-    
-    
-    AOS.init();
+    AOS.init({
+        once: true,
+    });
 
     gsap.registerPlugin(ScrollTrigger);
     gsap.utils.toArray(".revealUp").forEach(function (elem) {
         ScrollTrigger.create({
             trigger: elem,
             start: "top 90%",
-            // end: "bottom 20%",
             markers: false,
+            once: true,
             onEnter: function () {
                 gsap.fromTo(
                     elem,
@@ -25,29 +25,10 @@ $(document).ready(function () {
                         overwrite: "auto"
                     }
                 );
-            },
-            onLeave: function () {
-                gsap.fromTo(elem, { autoAlpha: 1 }, { autoAlpha: 0, overwrite: "auto" });
-            },
-            onEnterBack: function () {
-                gsap.fromTo(
-                    elem,
-                    { y: 100, autoAlpha: 0 },
-                    {
-                        duration: 1,
-                        y: 0,
-                        autoAlpha: 1,
-                        ease: "back",
-                        overwrite: "auto"
-                    }
-                );
-            },
-            onLeaveBack: function () {
-                gsap.fromTo(elem, { autoAlpha: 1 }, { autoAlpha: 0, overwrite: "auto" });
             }
         });
     });
-    if($(this).scrollTop() > 10){
+    if ($(this).scrollTop() > 10) {
         $("nav").addClass("scrolled");
     }
 
@@ -57,7 +38,6 @@ $(document).ready(function () {
     });
 
     $('.hamburger-icon-outer').click(function () {
-        console.log("Ordered to open the menu")
         $(this).toggleClass('open');
         $(".mobile-menu").toggleClass('open');
     });
@@ -65,5 +45,5 @@ $(document).ready(function () {
         $(".hamburger-icon-outer").toggleClass('open');
         $(".mobile-menu").toggleClass('open');
     });
-    
+
 });

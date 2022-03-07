@@ -10,8 +10,10 @@ body {
   width: auto !important;
 }
 .main-header {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
+  display: block;
   height: 80px;
   background: #ffffff;
   z-index: 9;
@@ -926,7 +928,7 @@ width: 50%;
 }
 @media screen and (max-width: 992px) {
   body {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
   .d-hide-mobile {
     display: none;
@@ -939,7 +941,7 @@ width: 50%;
   margin-top: unset;
     width: 90vw!important;
 }
-
+  
   .custom-container,
   .hero-section .container,
   .benefits-section .container,
