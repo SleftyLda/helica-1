@@ -47,3 +47,5 @@ $(document).ready(function () {
     });
 
 });
+
+console.log("Design: Maria João Abrantes", '\n','https://mariajoaoabrantes.work/');
