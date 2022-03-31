@@ -4,7 +4,16 @@ setTimeout(function () {
 $(document).ready(function () {
     AOS.init({
         once: true,
+        easing: "linear",
     });
+    calculateDynamicMargin();
+
+    function calculateDynamicMargin() {
+        var marginRef = $(".benefits-section .container").css("margin-left");
+        $("#sw_pill-container").css("margin-left", marginRef)
+    }
+
+
 
     gsap.registerPlugin(ScrollTrigger);
     gsap.utils.toArray(".revealUp").forEach(function (elem) {
@@ -35,6 +44,8 @@ $(document).ready(function () {
     $(window).scroll(function () {
         var _scroll = $(this).scrollTop() > 10;
         $("nav").toggleClass("scrolled", _scroll);
+
+        calculateDynamicMargin();
     });
 
     $('.hamburger-icon-outer').click(function () {
@@ -47,5 +58,3 @@ $(document).ready(function () {
     });
 
 });
-
-console.log("Design: Maria João Abrantes", '\n','https://mariajoaoabrantes.work/');
