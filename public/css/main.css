@@ -1,5 +1,6 @@
 html,body {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  scroll-behavior: smooth;
 }
 body {
   font-family: "Montserrat", sans-serif;
@@ -950,7 +951,7 @@ text-align: right;
 }
 @media screen and (max-width: 992px) {
   body {
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
   }
   .d-hide-mobile {
     display: none;
@@ -1279,7 +1280,9 @@ text-align: right;
     width: calc(100vw + 0px);
   }
   #green-hero-img-wrapper{
-    right: -10px;
+    overflow-x: hidden;
+    right: 0px;
+    /* right: -10px; */
     bottom: -90px;
   }
   #green-hero-img-wrapper svg{
