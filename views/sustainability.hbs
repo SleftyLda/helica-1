@@ -242,30 +242,32 @@
             var animation = bodymovin.loadAnimation({
                 // animationData: { /* ... */ },
                 container: document.getElementById('green-hero-img-wrapper'), // required
-                path: '/data-hero.json', // required
+                path: 'data-hero.json', // required
                 renderer: 'svg', // required
                 loop: false, // optional
                 autoplay: true, // optional
             });
         })
 
-        var animationOne = bodymovin.loadAnimation({
+        {{!-- var animationOne = bodymovin.loadAnimation({
             // animationData: { /* ... */ },
             container: document.getElementById('green-animation-section'), // required
             path: '/data.json', // required
             renderer: 'svg', // required
             loop: true, // optional
             autoplay: true, // optional
-        });
+        }); --}}
 
+        $(".number-on-card").hide();
         var cardWayPoint = new Waypoint({
             element: document.getElementById('cn-number-section-wrapper'),
             handler: function () {
+                $(".number-on-card").show();
                 $('.number-on-card').each(function () {
                     $(this).prop('Counter', 0).animate({
                         Counter: $(this).text()
                     }, {
-                        duration: 3000,
+                        duration: 2000,
                         easing: 'swing',
                         step: function (now) {
                             $(this).text(Math.ceil(now));
@@ -274,8 +276,25 @@
                 });
                 cardWayPoint.disable()
             },
-            offset: '50%'
+            offset: '80%'
         });
+        
+        var animationPoint = new Waypoint({
+        element: document.getElementById('green-animation-section'),
+        handler: function () {
+            var animationOne = bodymovin.loadAnimation({
+                // animationData: { /* ... */ },
+                container: document.getElementById('green-animation-section'), // required
+                path: 'data.json', // required
+                renderer: 'svg', // required
+                loop: true, // optional
+                autoplay: true, // optional
+            });
+            animationPoint.disable()
+        },
+        offset: '60%'
+        });
+
 
 
     </script>
