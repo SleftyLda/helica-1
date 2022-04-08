@@ -1246,9 +1246,13 @@ text-align: right;
     height: 196px;
   }
   .event-banner img {
-    height: 100%;
+    height: auto;
+    max-height: 100%;
     width: 100%;
+    object-fit: cover;
+    /* width: 100%; */
     border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
   }
   .add-to-calender-btn {
     max-width: 100%;
