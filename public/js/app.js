@@ -1,3 +1,5 @@
+console.log("Design: Maria João Abrantes", "\n" ,"www.mariajoaoabrantes.work");
+
 setTimeout(function () {
     $(".loader").hide();
 }, 1000);
