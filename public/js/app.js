@@ -60,3 +60,6 @@ $(document).ready(function () {
     });
 
 });
+
+//Ana animation
+$('.chat-message').animate({ height: 'toggle', opacity: 'toggle' }, 'slow');

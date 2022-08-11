@@ -20,6 +20,10 @@ app.get("/contacts", (req,res) => {
     res.render("contact");
 });
 
+app.get("/blog", (req,res) => {
+    res.render("blog");
+});
+
 app.get("/sustainability", (req,res) => {
     res.render("sustainability");
 });
