@@ -1,6 +1,8 @@
+const { render } = require('ejs');
 const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
+const mongoose = require('mongoose');
 
 dotenv.config({ path: './.env'});
 
@@ -9,7 +11,8 @@ const app = express();
 const publicDirectory = path.join(__dirname, '/public');
 app.use(express.static(publicDirectory));
 
-app.set('view engine', 'hbs');
+// View engine setup
+app.set('view engine', 'ejs');
 
 //Data parsing
 app.get("/", (req,res) => {
@@ -34,75 +37,38 @@ app.listen(5000, () => {
     console.log("Server started on port 5000");
 })
 
-// Calendar starts
+// DB connection
+mongoose
+  .connect(process.env.MONGO_URI, {useNewUrlParser: true})
+  .then(() => console.log('DB connected!'))
+  .catch(err => console.error(err))
+  
+const trackingSchema = {
+  customer: {Type: String},
+  workId: {Type: String},
+  date0: {Type: Date},
+  date1: {Type: Date},
+  date2: {Type: Date},
+  date3: {Type: Date},
+  date4: {Type: Date},
+  date5: {Type: Date},
+  phase: {Type: Number},
+  photoLink: {Type: String},
+  workName: {Type: String},
+  trees: {Type: Number},
+}
 
-const {google} = require('googleapis');
-require('dotenv').config();
+const tracking = mongoose.model('progressTracking', trackingSchema, 'progressTracking');
 
-//// Provide the required configuration
-// const CREDENTIALS = JSON.parse(process.env.CREDENTIALS);
-// const calendarId = process.env.CALENDAR_ID;
+let id;
+app.get('/tracking/:id', async function(req,res){
+  id = req.params.id.toString();
 
-// // Google calendar API settings
-// const SCOPES = 'https://www.googleapis.com/auth/calendar';
-// const calendar = google.calendar({version: "v3"});
+  let process = await tracking.findById(id);
 
-// const auth = new google.auth.JWT(
-//         CREDENTIALS.client_email,
-//         null,
-//         CREDENTIALS.private_key,
-//         SCOPES
-// );
+  res.render('tracker', { tracking: process })
+})
 
-// // Insert new event to Google Calendar
-// const insertEvent = async (event) => {
-//     try {
-//         let response = await calendar.events.insert({
-//             auth: auth,
-//             calendarId: calendarId,
-//             resource: event
-//         });
-
-//         if (response['status'] == 200 && response['statusText'] === 'OK') {
-//             return 1;
-//         } else {
-//             return 0;
-//         }
-//     } catch (error) {
-//         console.log(`Error at insertEvent --> ${error}`);
-//         return 0;
-//     }
-// };
-
-// // The event
-// var event = {
-// 	'summary': 'Plantação de árvores - Helica',
-// 	'location': 'Tomar',
-// 	'description': 'Primeiro evento comunitário de plantação de árvores com a Helica!',
-// 	'start': {
-// 	'dateTime': '2022-06-05T09:00:00+00:00',
-// 	'timeZone': 'Europe/London',
-// 	},
-// 	'end': {
-// 	'dateTime': '2022-06-05T13:00:00+00:00',
-// 	'timeZone': 'Europe/London',
-// 	},
-// 	'attendees': [],
-// 	'reminders': {
-// 	'useDefault': false,
-// 	'overrides': [
-// 		{'method': 'email', 'minutes': 24 * 60},
-// 		{'method': 'popup', 'minutes': 10},
-// 	],
-// 	},
-// };
-
-// insertEvent(event)
-//     .then((res) => {
-//         console.log(res);
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     })
-
-
+app.get('/', (req, res) => {
+  res.render('tracker');
+})
