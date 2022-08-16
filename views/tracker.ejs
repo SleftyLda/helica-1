@@ -107,7 +107,7 @@
                 let now = new Date();
 
                 let howMuchTime = dateOfConstruction.getTime() - now.getTime();
-                let howManyDays = Math.round(howMuchTime/(1000*3600*24)); %>
+                let howManyDays = Math.max(Math.round(howMuchTime/(1000*3600*24)),0); %>
 
                 <h3>A tua instalação pode ser feita a partir de <%= date5 %>. <br>Faltam <%= howManyDays %> dias!</h1>
             </div>
